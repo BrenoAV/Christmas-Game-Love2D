@@ -23,8 +23,7 @@ function Player:new(x, y, width, height, world)
     o.isRunning = false
     o.isJumping = false
     o.isGrounded = true
-    o.isMovementPlatformX = false
-    o.isMovementPlatformY = false
+    o.allowJump = true
 
     -- Sprites
     o.spriteSheet = love.graphics.newImage("sprites/playerSheet.png")
@@ -60,14 +59,6 @@ function Player:getPosition()
     return self.physics.body:getPosition()
 end
 
-function Player:setDeltaMovementPlataformX(delta)
-    self.deltaMovementPlatformX = delta
-end
-
-function Player:setPlatformY(platformY)
-    self.platformY = platformY
-end
-
 function Player:update(dt)
 
     self:animation()
@@ -92,14 +83,6 @@ function Player:move(dt)
         self.physics.body:setX(self.physics.body:getX() + self.speed*dt)
         self.isRunning = true
         self.dir = 1
-    end
-
-    -- Movement Platforms
-    if self.isMovementPlatformX and not self.isRunning  then
-        self.physics.body:setX(self.physics.body:getX() + self.deltaMovementPlatformX)
-    end
-    if self.isMovementPlatformY then
-        self.physics.body:setY(self.physics.body:getY() + self.deltaMovementPlatformX)
     end
 end
 

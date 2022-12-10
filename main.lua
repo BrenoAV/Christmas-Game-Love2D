@@ -5,6 +5,8 @@ require('scripts.interface')
 require('scripts.timer')
 Camera = require('libraries.hump.camera')
 
+count = 0
+
 -- Timer
 local timer = nil
 
@@ -112,16 +114,10 @@ end
 
 function beginContact(a, b, coll)
     if a:getUserData() > b:getUserData() then a, b = b, a end
-    if (a:getUserData() == "Platform" and b:getUserData() == "Player") then
+    if (a:getUserData() == "JumperArea" and b:getUserData() == "Player") then
         map.player.isJumping = false
         map.player.isGrounded = true
     end
-    if (a:getUserData() == "MovementPlatform" and b:getUserData() == "Player") then
-        map.player.isJumping = false
-        map.player.isGrounded = true
-        timer:startTimer(1)
-    end
-
     if (a:getUserData() == "Endpoint" and b:getUserData() == "Enemy") then
         for _,e in pairs(map.enemies) do
             if e.physics.fixture == b then
@@ -145,48 +141,22 @@ function beginContact(a, b, coll)
         gameController:setGameState(1)
         map:destroy()
     end
+
+    if (a:getUserData() == "Endpoint" and b:getUserData() == "Player") then
+    end
+
 end
 
 function endContact(a, b, coll)
     if a:getUserData() > b:getUserData() then a, b = b, a end
-    if (a:getUserData() == "Platform" and b:getUserData() == "Player") then
+    if (a:getUserData() == "JumperArea" and b:getUserData() == "Player") then
         map.player.isJumping = true
         map.player.isGrounded = false
-    end
-    if (a:getUserData() == "MovementPlatform" and b:getUserData() == "Player") then
-        map.player.isJumping = true
-        map.player.isGrounded = false
-        map.player.isMovementPlatformX = false
-        map.player.isMovementPlatformY = false
-        map.player:setDeltaMovementPlataformX(0)
     end
 end
 
 function preSolve(a, b, coll)
-    if a:getUserData() > b:getUserData() then a, b = b, a end
-    if (a:getUserData() == "MovementPlatform" and b:getUserData() == "Player") then
-        map.player.isJumping = false
-        map.player.isGrounded = true
-        for _,p in pairs(map.movementPlatforms) do
-            if p.physics.fixture == a then
-                if p.orientation == "vertical" then
-                    map.player.isMovementPlatformY = true
-                    map.player.isMovementPlatformX = false
-                    local _, py = p:getPosition()
-                    map.player:setPlatformY(py)
 
-                    -- Timer to resolve the animation bug
-                    map.player.activateAnimation = false
-                    timer:resetTimer(1)
-                elseif p.orientation == "horizontal" then
-                    map.player.isMovementPlatformY = false
-                    map.player.isMovementPlatformX = true
-
-                end
-                map.player:setDeltaMovementPlataformX(p:getDeltaMovementX())
-            end
-        end
-    end
 end
 
 function postSolve(a, b, coll, normalimpulse, tangentimpulse)

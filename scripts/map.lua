@@ -1,5 +1,4 @@
 require('scripts.platform')
-require('scripts.movement_platform')
 require('scripts.malicat')
 require('scripts.player')
 require('scripts.spike')
@@ -35,16 +34,10 @@ function Map:update(dt)
         self.player:update(dt)
     end
 
-    -- Platforms
-    for _,p in ipairs(self.movementPlatforms) do
-        p:update(dt)
-    end
-
     -- Enemies
     for _,e in ipairs(self.enemies) do
         e:update(dt)
     end
-
 
     -- Spikes
     for _,s in ipairs(self.spikes) do
@@ -71,10 +64,7 @@ function Map:drawLayer(layer)
     -- for _,p in ipairs(self.platforms) do
     --     p:draw()
     -- end
-    -- movement platforms
-    for _,p in ipairs(self.movementPlatforms) do
-        p:draw()
-    end
+
 end
 
 function Map:drawBackground()
@@ -97,20 +87,6 @@ function Map:loadMap(mapName)
             obj.width, obj.height, self.world))
     end
 
-    -- Movement Platforms Vertical
-    for _, obj in pairs(self.gameMap.layers["MovementPlatformsVertical"].objects) do
-        table.insert(self.movementPlatforms, MovementPlatform:new(
-                obj.x + obj.width/2, obj.y + obj.height / 2,
-            obj.width, obj.height, 100, "up", 300, "vertical", self.world))
-    end
-
-    -- Movement Platforms Vertical
-    for _, obj in pairs(self.gameMap.layers["MovementPlatformsHorizontal"].objects) do
-        table.insert(self.movementPlatforms, MovementPlatform:new(
-                obj.x + obj.width/2, obj.y + obj.height / 2,
-            obj.width, obj.height, 100, "right", 200, "horizontal", self.world))
-    end
-
     -- Enemies
     for _, obj in pairs(self.gameMap.layers["EnemiesSpawn"].objects) do
         table.insert(self.enemies, MaliCat:new(obj.x, obj.y, self.world))
@@ -118,14 +94,10 @@ function Map:loadMap(mapName)
 
     -- Spikes
     for _, obj in pairs(self.gameMap.layers["Spikes"].objects) do
-        table.insert(self.spikes, Spike:new(obj.x, obj.y, obj.width, obj.height, self.world))
+        table.insert(self.spikes, Spike:new(obj.x + obj.width/2,
+            obj.y + obj.height/2, obj.width, obj.height, self.world))
     end
 
-    -- platforms
-    -- table.insert(self.movementPlatforms, MovementPlatform:new(1150, 500,
-    --     150, 20, 100, "left", 180, "horizontal", self.world))
-
-    -- table.insert(self.enemies, MaliCat:new(1100, 400, self.world))
 end
 
 function Map:destroy()
@@ -151,12 +123,5 @@ function Map:destroy()
         table.remove(self.platforms, i)
         i = i - 1
     end
-    i = #self.movementPlatforms
-    while i > -1 do
-        if self.movementPlatforms[i] ~= nil then
-            self.movementPlatforms[i]:destroy()
-        end
-        table.remove(self.movementPlatforms, i)
-        i = i - 1
-    end
+
 end
