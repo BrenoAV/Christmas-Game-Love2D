@@ -1,4 +1,5 @@
 local anim8 = require("libraries.anim8.anim8")
+require('scripts.timer')
 
 Player = {}
 
@@ -15,8 +16,6 @@ function Player:new(x, y, width, height, world)
     o.speed = 240
     o.world = world
     o.dir = 1
-    o.deltaMovementPlatformX = 0
-    o.platformY = 0
 
     -- States
     o.isIdle = true
@@ -24,6 +23,11 @@ function Player:new(x, y, width, height, world)
     o.isJumping = false
     o.isGrounded = true
     o.allowJump = true
+
+    -- Lifes
+    o.lifes = 2
+    o.timerOneShot = Timer:new()
+    o.timerOneShot:addTimerOneShot(1, 0, 0.1)
 
     -- Sprites
     o.spriteSheet = love.graphics.newImage("sprites/playerSheet.png")
@@ -38,6 +42,8 @@ function Player:new(x, y, width, height, world)
     o.animations.run = anim8.newAnimation(o.grid('1-11', 3), 0.05)
     o.animations.actual = o.animations.idle
     o.activateAnimation = true
+
+    o.takenDamage = false
 
     -- Physics
     o.physics = {}
@@ -65,21 +71,39 @@ function Player:update(dt)
     self.animations.actual:update(dt)
     -- Movement
     self:move(dt)
+
+    -- Timers
+    self.timerOneShot:update(dt)
+
+    -- Animation Taken Damage
+    if self.timerOneShot.timersOneShot[1].finished then
+        self.takenDamage = false
+    end
 end
 
 function Player:draw()
     local px, py = self:getPosition()
+    -- Animation Taken Damage
+    if self.takenDamage then
+        love.graphics.setColor(1, 0, 0)
+    else
+        love.graphics.setColor(1, 1, 1)
+    end
     self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 82)
+    love.graphics.setColor(1, 1, 1)
 end
 
 function Player:move(dt)
     self.isRunning = false
-    if love.keyboard.isDown("a") or love.keyboard.isDown("left") then
+    local px, py = self:getPosition()
+    if (love.keyboard.isDown("a") or love.keyboard.isDown("left")) and
+            px > 0
+        then
         self.physics.body:setX(self.physics.body:getX() - self.speed*dt)
         self.isRunning = true
         self.dir = -1
     end
-    if love.keyboard.isDown("d") or love.keyboard.isDown("right") then
+    if (love.keyboard.isDown("d") or love.keyboard.isDown("right")) then
         self.physics.body:setX(self.physics.body:getX() + self.speed*dt)
         self.isRunning = true
         self.dir = 1
@@ -109,4 +133,31 @@ end
 
 function Player:destroy()
     self.physics.fixture:destroy()
+end
+
+function Player:reset()
+    self:resetLifes()
+end
+
+-------------------------------------------------------------------------------
+-- Lifes System
+-------------------------------------------------------------------------------
+
+function Player:decreaseLifes(n, normX, normY)
+    normX = normX or 0
+    normY = normY or 0
+    print("normX = " .. normX .. " | normY = " .. normY)
+
+    self.lifes = self.lifes - n
+    self.takenDamage = true
+    self.timerOneShot:startTimerOneShot(1)
+    self.physics.body:applyLinearImpulse(1000 * -normX, 3000 * -normY)
+end
+
+function Player:resetLifes()
+    self.lifes = 5
+end
+
+function Player:getLifes()
+    return self.lifes
 end

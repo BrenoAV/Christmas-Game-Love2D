@@ -100,7 +100,7 @@ function love.draw()
     map:drawBackground()
 
     if gameController:getGameState() == 1 then
-        interface:draw()
+        interface:drawMenu()
     elseif gameController:getGameState() == 2 then
         cam:attach()
             -- do your drawing here
@@ -109,6 +109,7 @@ function love.draw()
             debug()
         cam:detach()
 
+        interface:drawUI(map.player:getLifes())
     end
 end
 
@@ -126,18 +127,35 @@ function beginContact(a, b, coll)
         end
     end
 
-    -- collisions between player enemy
+    ---------------------------------------------------------------------------
+    -- Lose Lifes
+    ---------------------------------------------------------------------------
     if (a:getUserData() == "Enemy" and b:getUserData() == "Player") then
-        gameController:setGameState(1)
-        map:destroy()
+        local normX, normY = coll:getNormal()
+        map.player:decreaseLifes(1, normX, normY)
+
+        for _,e in pairs(map.enemies) do
+            if e.physics.fixture == a then
+                if (normX > 0 and e.dir < 0) or (normX < 0 and e.dir > 0) then
+                    e:turnAround()
+                end
+            end
+        end
     end
     if (a:getUserData() == "Player" and b:getUserData() == "SawBlade") then
-        gameController:setGameState(1)
-        map:destroy()
+
+        local normX, normY = coll:getNormal()
+        map.player:decreaseLifes(1, normX, normY)
+
+        for _,e in pairs(map.enemies) do
+            if b == e.sawBlade.physics.fixture then
+                e:destroySawBlade()
+            end
+        end
     end
 
-    -- collision between spike and player
-    if (a:getUserData() == "Player" and b:getUserData() == "Spike") then
+    -- collision between sea and player
+    if (a:getUserData() == "Player" and b:getUserData() == "Sea") then
         gameController:setGameState(1)
         map:destroy()
     end
@@ -145,6 +163,13 @@ function beginContact(a, b, coll)
     if (a:getUserData() == "Endpoint" and b:getUserData() == "Player") then
     end
 
+    ---------------------------------------------------------------------------
+    -- Gamer Over check
+    ---------------------------------------------------------------------------
+    if map.player:getLifes() <= 0 then
+        gameController:setGameState(1)
+        map:destroy()
+    end
 end
 
 function endContact(a, b, coll)
@@ -160,6 +185,7 @@ function preSolve(a, b, coll)
 end
 
 function postSolve(a, b, coll, normalimpulse, tangentimpulse)
+
 end
 
 -- Keyboard

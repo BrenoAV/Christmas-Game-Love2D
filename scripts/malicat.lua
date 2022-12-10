@@ -15,7 +15,7 @@ function MaliCat:new(x, y, world)
 
     o.speed = 150
 
-    -- Bullet
+    -- SawBlade
     o.sawBlade = nil
     o.timer = Timer:new() -- timer to spawn the blade
     o.timer:addTimer(1, 0, 2) -- X seconds
@@ -52,7 +52,7 @@ function MaliCat:update(dt)
         end
     else
         if self.timer.timers[1].finished then
-            self:throwSawBlade()
+            --self:throwSawBlade()
             self.timer:resetTimer(1)
         end
     end
@@ -90,7 +90,7 @@ function MaliCat:destroy()
     end
 end
 
--- Bullet
+-- sawBlade
 function MaliCat:throwSawBlade()
     local ex, ey = self:getPosition()
     -- destroy if already exists
@@ -98,4 +98,11 @@ function MaliCat:throwSawBlade()
         self.sawBlade:destroy()
     end
     self.sawBlade = SawBlade:new(ex, ey, self.speed, self.dir, self.world)
+end
+
+function MaliCat:destroySawBlade()
+    if self.sawBlade ~= nil then
+        self.sawBlade:destroy()
+        self.sawBlade = nil
+    end
 end

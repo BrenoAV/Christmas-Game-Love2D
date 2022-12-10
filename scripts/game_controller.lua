@@ -10,6 +10,9 @@ function GameController:new()
     -- 2 - Game
     self.gameState = 1
 
+    -- GameOver
+    self.gameOver = false
+
     return o
 end
 

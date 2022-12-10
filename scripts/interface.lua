@@ -11,10 +11,23 @@ function Interface:new()
     o.phraseMenu = "Please press enter/return to start the game..."
     o.menuFont = love.graphics.newFont("fonts/MatrixSans-Regular.ttf", 20)
 
+    --
+    -- UI
+    --
+    o.spritePanettone = love.graphics.newImage("sprites/spritePanettone.png")
+
     return o
 end
 
-function Interface:draw()
+function Interface:drawMenu()
     love.graphics.setFont(self.menuFont)
     love.graphics.printf(self.phraseMenu, 0, HEIGHT/2, WIDTH, "center")
+end
+
+function Interface:drawUI(lifes)
+    ---
+    -- LIFES
+    ---
+    love.graphics.draw(self.spritePanettone, 10, 10)
+    love.graphics.print(lifes, 50, 12)
 end

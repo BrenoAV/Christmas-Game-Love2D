@@ -1,7 +1,7 @@
 require('scripts.platform')
 require('scripts.malicat')
 require('scripts.player')
-require('scripts.spike')
+require('scripts.sea')
 local sti = require('libraries/sti')
 
 Map = {}
@@ -16,7 +16,7 @@ function Map:new(world)
     o.platforms = {}
     o.movementPlatforms = {}
     o.enemies = {}
-    o.spikes = {}
+    o.sea = {}
 
     -- Graphics
     o.background = love.graphics.newImage("maps/backgrounds/BG.png")
@@ -28,7 +28,6 @@ end
 function Map:update(dt)
     self.gameMap:update(dt)
 
-
     -- Player
     if self.player ~= nil then
         self.player:update(dt)
@@ -39,10 +38,6 @@ function Map:update(dt)
         e:update(dt)
     end
 
-    -- Spikes
-    for _,s in ipairs(self.spikes) do
-        s:draw()
-    end
 end
 
 function Map:drawLayer(layer)
@@ -92,9 +87,9 @@ function Map:loadMap(mapName)
         table.insert(self.enemies, MaliCat:new(obj.x, obj.y, self.world))
     end
 
-    -- Spikes
-    for _, obj in pairs(self.gameMap.layers["Spikes"].objects) do
-        table.insert(self.spikes, Spike:new(obj.x + obj.width/2,
+    -- Sea
+    for _, obj in pairs(self.gameMap.layers["Sea"].objects) do
+        table.insert(self.sea, Sea:new(obj.x + obj.width/2,
             obj.y + obj.height/2, obj.width, obj.height, self.world))
     end
 
@@ -102,7 +97,6 @@ end
 
 function Map:destroy()
     self.player:destroy()
-
 
     -- enemies
     local i = #self.enemies
