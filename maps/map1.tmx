@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="50" height="10" tilewidth="64" tileheight="64" infinite="0" nextlayerid="15" nextobjectid="22">
+ <editorsettings>
+  <export target="map1.lua" format="lua"/>
+ </editorsettings>
+ <tileset firstgid="1" name="platformer" tilewidth="64" tileheight="64" tilecount="20" columns="5">
+  <image source="tileset1-64x64.png" width="320" height="256"/>
+ </tileset>
+ <layer id="6" name="Tile Layer 1" width="50" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,17,18,18,18,18,18,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,18,18,18,18,18,18,18,18,18,18,18,19,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+2,3,3,3,3,3,4,5,5,2,3,3,3,3,4,5,5,5,5,5,2,3,3,3,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5
+</data>
+ </layer>
+ <objectgroup id="8" name="PlayerSpawn">
+  <object id="4" x="64" y="564">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="11" name="EnemiesSpawn">
+  <object id="7" x="949.34" y="556">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="9" name="Platforms">
+  <object id="5" x="2" y="576" width="445.5" height="62"/>
+  <object id="6" x="576" y="576.166" width="381.333" height="61.1667"/>
+  <object id="14" x="512" y="129.333" width="446.667" height="45.3333"/>
+  <object id="17" x="1665.33" y="382.667" width="829.333" height="45.3333"/>
+  <object id="18" x="1280" y="576" width="318" height="63"/>
+ </objectgroup>
+ <objectgroup id="12" name="MovementPlatformsVertical" offsetx="0" offsety="1">
+  <object id="8" x="253" y="529.667" width="192.667" height="28.6667"/>
+ </objectgroup>
+ <objectgroup id="14" name="MovementPlatformsHorizontal" offsetx="0" offsety="1">
+  <object id="16" x="870.667" y="353.667" width="277.333" height="24"/>
+ </objectgroup>
+ <objectgroup id="13" name="Spikes">
+  <object id="13" x="1600.91" y="599.879" width="1600.31" height="40.3333"/>
+  <object id="20" x="958" y="604" width="322" height="34"/>
+  <object id="21" x="450" y="605" width="126" height="33"/>
+ </objectgroup>
+</map>

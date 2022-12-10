@@ -1,0 +1,230 @@
+require('love')
+require('scripts.map')
+require('scripts.game_controller')
+require('scripts.interface')
+require('scripts.timer')
+Camera = require('libraries.hump.camera')
+
+-- Timer
+local timer = nil
+
+-- Local Variables
+local world = nil
+local cam = nil
+local gameController = nil
+local interface = nil
+
+-- Map
+local map = nil
+
+-- CONSTANTS
+WIDTH = love.graphics.getWidth()
+HEIGHT = love.graphics.getHeight()
+
+function love.load()
+    -- gamecontroller
+    gameController = GameController:new()
+
+    -- physics
+    world = love.physics.newWorld(0, 1500, false)
+    world:setCallbacks(beginContact, endContact, preSolve, postSolve)
+
+    -- objects
+
+    map = Map:new(world)
+
+    -- interface
+    interface = Interface:new()
+
+    -- timer
+    timer = Timer:new()
+    timer:addTimer(1, 0, 0.15)
+
+    -- camera
+    cam = Camera()
+end
+
+function love.update(dt)
+    if gameController:getGameState() == 1 then
+
+    elseif gameController:getGameState() == 2 then
+        -- World
+        world:update(dt)
+
+        -- Map
+        map:update(dt)
+
+        -- Timer
+        timer:update(dt)
+
+        -- animations bug
+        if timer.timers[1].finished then
+            map.player.activateAnimation = true
+            timer.timers[1].pauseLoop = true
+        end
+
+        -- camera
+        if map.player ~= nil then
+            local px, py = map.player:getPosition() -- Player's position
+            cam:lookAt(px, py)
+
+            -- Left Border
+            if cam.x < WIDTH/2 then
+                cam.x = WIDTH/2
+            end
+            -- Upper Border
+            if cam.y > HEIGHT/2 then
+                cam.y = HEIGHT/2
+            end
+
+            local mapW = map.gameMap.width * map.gameMap.tilewidth
+            local mapH = map.gameMap.height * map.gameMap.tileheight
+            -- Right Border
+            if cam.x > (mapW - WIDTH/2) then
+                cam.x = mapW - WIDTH/2
+            end
+            -- Bottom Border
+            if cam.y > (mapH - HEIGHT/2) then
+                cam.y = mapH - HEIGHT/2
+            end
+
+        else
+            cam:lookAt(WIDTH/2, HEIGHT/2)
+        end
+    end
+end
+
+function love.draw()
+    map:drawBackground()
+
+    if gameController:getGameState() == 1 then
+        interface:draw()
+    elseif gameController:getGameState() == 2 then
+        cam:attach()
+            -- do your drawing here
+            map:drawLayer()
+            --map.player:draw()
+            debug()
+        cam:detach()
+
+    end
+end
+
+function beginContact(a, b, coll)
+    if a:getUserData() > b:getUserData() then a, b = b, a end
+    if (a:getUserData() == "Platform" and b:getUserData() == "Player") then
+        map.player.isJumping = false
+        map.player.isGrounded = true
+    end
+    if (a:getUserData() == "MovementPlatform" and b:getUserData() == "Player") then
+        map.player.isJumping = false
+        map.player.isGrounded = true
+        timer:startTimer(1)
+    end
+
+    if (a:getUserData() == "Endpoint" and b:getUserData() == "Enemy") then
+        for _,e in pairs(map.enemies) do
+            if e.physics.fixture == b then
+                e:turnAround()
+            end
+        end
+    end
+
+    -- collisions between player enemy
+    if (a:getUserData() == "Enemy" and b:getUserData() == "Player") then
+        gameController:setGameState(1)
+        map:destroy()
+    end
+    if (a:getUserData() == "Player" and b:getUserData() == "SawBlade") then
+        gameController:setGameState(1)
+        map:destroy()
+    end
+
+    -- collision between spike and player
+    if (a:getUserData() == "Player" and b:getUserData() == "Spike") then
+        gameController:setGameState(1)
+        map:destroy()
+    end
+end
+
+function endContact(a, b, coll)
+    if a:getUserData() > b:getUserData() then a, b = b, a end
+    if (a:getUserData() == "Platform" and b:getUserData() == "Player") then
+        map.player.isJumping = true
+        map.player.isGrounded = false
+    end
+    if (a:getUserData() == "MovementPlatform" and b:getUserData() == "Player") then
+        map.player.isJumping = true
+        map.player.isGrounded = false
+        map.player.isMovementPlatformX = false
+        map.player.isMovementPlatformY = false
+        map.player:setDeltaMovementPlataformX(0)
+    end
+end
+
+function preSolve(a, b, coll)
+    if a:getUserData() > b:getUserData() then a, b = b, a end
+    if (a:getUserData() == "MovementPlatform" and b:getUserData() == "Player") then
+        map.player.isJumping = false
+        map.player.isGrounded = true
+        for _,p in pairs(map.movementPlatforms) do
+            if p.physics.fixture == a then
+                if p.orientation == "vertical" then
+                    map.player.isMovementPlatformY = true
+                    map.player.isMovementPlatformX = false
+                    local _, py = p:getPosition()
+                    map.player:setPlatformY(py)
+
+                    -- Timer to resolve the animation bug
+                    map.player.activateAnimation = false
+                    timer:resetTimer(1)
+                elseif p.orientation == "horizontal" then
+                    map.player.isMovementPlatformY = false
+                    map.player.isMovementPlatformX = true
+
+                end
+                map.player:setDeltaMovementPlataformX(p:getDeltaMovementX())
+            end
+        end
+    end
+end
+
+function postSolve(a, b, coll, normalimpulse, tangentimpulse)
+end
+
+-- Keyboard
+function love.keypressed(key)
+    if key == "w" or key == "up" then
+        map.player:jump()
+    elseif gameController:getGameState() == 1 and key == "return" then
+        -- Start the game from the menu
+        map:loadMap()
+        gameController:setGameState(2)
+    elseif key == "escape" then
+        love.event.quit()
+    end
+end
+
+function debug()
+    -- Debug
+    --local mx, my = love.mouse.getPosition()
+    --love.graphics.print("x = " .. mx .. " | " .. "y = " .. my, 0, 0)
+    --local x, y = 200, 100
+    --love.graphics.line(x, 0, x, HEIGHT) -- Vertical
+    --love.graphics.line(0, y, WIDTH, y) -- Horizontal
+    if love.keyboard.isDown("c") then
+        for _, body in pairs(world:getBodies()) do
+          for _, fixture in pairs(body:getFixtures()) do
+              local shape = fixture:getShape()
+              if shape:typeOf("CircleShape") then
+                  local cx, cy = body:getWorldPoints(shape:getPoint())
+                  love.graphics.circle("fill", cx, cy, shape:getRadius())
+              elseif shape:typeOf("PolygonShape") then
+                  love.graphics.polygon("fill", body:getWorldPoints(shape:getPoints()))
+              else
+                  love.graphics.line(body:getWorldPoints(shape:getPoints()))
+              end
+          end
+        end
+    end
+end
