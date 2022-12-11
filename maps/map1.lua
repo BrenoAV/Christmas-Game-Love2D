@@ -5,16 +5,16 @@ return {
   class = "",
   orientation = "orthogonal",
   renderorder = "right-down",
-  width = 50,
-  height = 10,
+  width = 60,
+  height = 20,
   tilewidth = 64,
   tileheight = 64,
-  nextlayerid = 17,
-  nextobjectid = 58,
+  nextlayerid = 19,
+  nextobjectid = 69,
   properties = {},
   tilesets = {
     {
-      name = "platformer",
+      name = "tileset-winter",
       firstgid = 1,
       class = "",
       tilewidth = 64,
@@ -22,7 +22,7 @@ return {
       spacing = 0,
       margin = 0,
       columns = 5,
-      image = "tileset1-64x64.png",
+      image = "Tilesets/tileset-winter.png",
       imagewidth = 320,
       imageheight = 256,
       objectalignment = "unspecified",
@@ -43,7 +43,7 @@ return {
       tiles = {}
     },
     {
-      name = "flag",
+      name = "Sign_2",
       firstgid = 21,
       class = "",
       tilewidth = 87,
@@ -51,7 +51,7 @@ return {
       spacing = 0,
       margin = 0,
       columns = 1,
-      image = "../sprites/flag.png",
+      image = "Objects/Sign_2.png",
       imagewidth = 87,
       imageheight = 93,
       objectalignment = "unspecified",
@@ -70,35 +70,6 @@ return {
       wangsets = {},
       tilecount = 1,
       tiles = {}
-    },
-    {
-      name = "chimney",
-      firstgid = 22,
-      class = "",
-      tilewidth = 64,
-      tileheight = 64,
-      spacing = 0,
-      margin = 0,
-      columns = 2,
-      image = "chimney.png",
-      imagewidth = 128,
-      imageheight = 128,
-      objectalignment = "unspecified",
-      tilerendersize = "tile",
-      fillmode = "stretch",
-      tileoffset = {
-        x = 0,
-        y = 0
-      },
-      grid = {
-        orientation = "orthogonal",
-        width = 64,
-        height = 64
-      },
-      properties = {},
-      wangsets = {},
-      tilecount = 4,
-      tiles = {}
     }
   },
   layers = {
@@ -106,8 +77,8 @@ return {
       type = "tilelayer",
       x = 0,
       y = 0,
-      width = 50,
-      height = 10,
+      width = 60,
+      height = 20,
       id = 6,
       name = "Tile Layer 1",
       class = "",
@@ -120,16 +91,146 @@ return {
       properties = {},
       encoding = "lua",
       data = {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 18, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 18, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 3, 3, 4, 0, 0, 0, 0, 0, 17, 18, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 7, 8, 8, 8, 8, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        3, 3, 3, 3, 3, 11, 12, 8, 8, 8, 8, 8, 14, 15, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 3, 3, 3, 3, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 17, 18, 19, 1, 7, 8, 8, 8, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 21, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 7, 8, 8, 8, 8, 14, 15, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 11, 12, 8, 8, 8, 8, 8, 8, 8, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        7, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 18,
+      name = "Texts",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 67,
+          name = "",
+          class = "",
+          shape = "text",
+          x = 31.6146,
+          y = 930.5,
+          width = 470.104,
+          height = 36.3333,
+          rotation = 0,
+          visible = true,
+          text = "Press <- or -> to moviment in the platform ",
+          fontfamily = "DejaVu Sans",
+          pixelsize = 21,
+          wrap = true,
+          halign = "center",
+          properties = {}
+        },
+        {
+          id = 68,
+          name = "",
+          class = "",
+          shape = "text",
+          x = 640.948,
+          y = 1042.5,
+          width = 207.437,
+          height = 36.3333,
+          rotation = 0,
+          visible = true,
+          text = "Jump pressing /\\",
+          fontfamily = "DejaVu Sans",
+          pixelsize = 21,
+          wrap = true,
+          halign = "center",
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 9,
+      name = "Platforms",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 58,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 2,
+          y = 1087.33,
+          width = 893.333,
+          height = 190.667,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 60,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 898.667,
+          y = 894.667,
+          width = 377.334,
+          height = 184,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 61,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 1278.67,
+          y = 1021.33,
+          width = 253.333,
+          height = 261.334,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 65,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 641.333,
+          y = 960,
+          width = 189.333,
+          height = 46.6667,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
       }
     },
     {
@@ -147,12 +248,12 @@ return {
       properties = {},
       objects = {
         {
-          id = 57,
+          id = 59,
           name = "",
           class = "",
           shape = "point",
-          x = 40,
-          y = 512.667,
+          x = 100,
+          y = 994,
           width = 0,
           height = 0,
           rotation = 0,
@@ -174,167 +275,7 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 30,
-          name = "",
-          class = "",
-          shape = "point",
-          x = 717.333,
-          y = 357.333,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 41,
-          name = "",
-          class = "",
-          shape = "point",
-          x = 1032.67,
-          y = 516,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 9,
-      name = "Platforms",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {
-        {
-          id = 31,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 1.33333,
-          y = 574.667,
-          width = 385.333,
-          height = 64,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 33,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 385.333,
-          y = 448,
-          width = 445.333,
-          height = 192,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 34,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 832,
-          y = 577.333,
-          width = 256,
-          height = 62,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 35,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 1153.33,
-          y = 448,
-          width = 190.667,
-          height = 46,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 36,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 1408.67,
-          y = 319.333,
-          width = 191.333,
-          height = 47.3333,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 37,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 1664.67,
-          y = 192.667,
-          width = 190,
-          height = 44.6667,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 38,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 1920,
-          y = 575.333,
-          width = 511.94,
-          height = 64.4242,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 52,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2304.5,
-          y = 448.75,
-          width = 9.25,
-          height = 5.625,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 53,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2422.5,
-          y = 448.75,
-          width = 8.75,
-          height = 5.68182,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",
@@ -349,34 +290,7 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 39,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 1088.67,
-          y = 611.333,
-          width = 830.667,
-          height = 27.3333,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 40,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2432,
-          y = 611.667,
-          width = 767.334,
-          height = 27.3333,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",
@@ -391,21 +305,7 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 44,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2313.95,
-          y = 452.75,
-          width = 108.106,
-          height = 1.58333,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",
@@ -420,34 +320,7 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 47,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2304.5,
-          y = 454.811,
-          width = 126.833,
-          height = 51.8561,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 49,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 2335.33,
-          y = 508,
-          width = 63.9394,
-          height = 66.6667,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     }
   }
 }

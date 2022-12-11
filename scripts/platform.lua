@@ -7,7 +7,7 @@ local function createEndPoint(x, y, world)
     endPoint.physics = {}
     endPoint.physics.body = love.physics.newBody(world, endPoint.x,
         endPoint.y, "static")
-    endPoint.physics.shape = love.physics.newRectangleShape(10, 10)
+    endPoint.physics.shape = love.physics.newRectangleShape(5, 5)
     endPoint.physics.fixture = love.physics.newFixture(
         endPoint.physics.body,
         endPoint.physics.shape)
@@ -25,7 +25,7 @@ local function createJumperArea(x, y, width, height, world)
     jumperArea.height = 2
     jumperArea.physics = {}
     jumperArea.physics.body = love.physics.newBody(world, jumperArea.x,
-        jumperArea.y, "kinematic")
+        jumperArea.y, "static")
     jumperArea.physics.shape = love.physics.newRectangleShape(jumperArea.width, jumperArea.height)
     jumperArea.physics.fixture = love.physics.newFixture(
         jumperArea.physics.body,
@@ -51,13 +51,15 @@ function Platform:new(x, y, width, height, world)
 
     -- Physics
     o.physics = {}
-    o.physics.body = love.physics.newBody(world, x, y, "kinematic")
+    o.physics.body = love.physics.newBody(world, x, y, "static")
     o.physics.shape = love.physics.newRectangleShape(width, height)
     o.physics.fixture = love.physics.newFixture(o.physics.body,
-        o.physics.shape, 1000)
+        o.physics.shape)
     o.physics.fixture:setUserData("Wall")
     o.physics.fixture:setCategory(3)
+    o.physics.fixture:setMask(3)
     o.physics.fixture:setMask(6) -- objects
+    o.physics.fixture:setMask(7) -- objects
 
     -- Endpoints
     o.endPointLeft = createEndPoint(o.x - o.width/2, o.y - o.height/2 - 20, o.world)

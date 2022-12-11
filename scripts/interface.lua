@@ -1,3 +1,5 @@
+require('scripts.text')
+
 Interface = {}
 
 function Interface:new()
@@ -31,4 +33,10 @@ function Interface:drawUI(lifes)
     love.graphics.setFont(self.menuFont)
     love.graphics.draw(self.spritePanettone, 10, 10)
     love.graphics.print(lifes, 50, 12)
+end
+
+function Interface:drawTutorial(texts)
+    for i,text in pairs(texts) do
+        print(i)
+    end
 end

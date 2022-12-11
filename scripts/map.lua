@@ -4,6 +4,7 @@ require('scripts.malicat')
 require('scripts.player')
 require('scripts.sea')
 require('scripts.flag')
+require('scripts.text')
 local sti = require('libraries/sti')
 
 Map = {}
@@ -14,6 +15,7 @@ function Map:new(world)
     self.__index = self
 
     o.world = world
+    o.texts = {}
     o.player = nil
     o.walls = {}
     o.platforms = {}
@@ -48,20 +50,24 @@ function Map:update(dt)
     for _,e in ipairs(self.enemies) do
         e:update(dt)
     end
-
 end
 
-function Map:drawLayer(layer)
-    layer = layer or "Tile Layer 1"
-    self.gameMap:drawLayer(self.gameMap.layers[layer])
+function Map:drawLayer()
+    self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 1"])
+    self.gameMap:drawLayer(self.gameMap.layers["Texts"])
 
     -- player
     if self.player ~= nil then
         self.player:draw()
     end
 
+    -- texts
+    for i,t in pairs(self.texts) do
+        t:draw()
+    end
+
     -- Enemies
-    for _,e in ipairs(self.enemies) do
+    for _,e in pairs(self.enemies) do
         e:draw()
     end
 end
@@ -77,6 +83,10 @@ function Map:loadMap(mapNum, resetPlayer)
 
     self.gameMap = sti("maps/" .. self.maps[mapNum] .. ".lua")
 
+    for _, obj in pairs(self.gameMap.layers["Texts"].objects) do
+        table.insert(self.texts, Text:new(obj.text, obj.x, obj.y))
+    end
+
     -- Player
     for _, obj in pairs(self.gameMap.layers["PlayerSpawn"].objects) do
         if resetPlayer then
@@ -89,8 +99,8 @@ function Map:loadMap(mapNum, resetPlayer)
 
     -- Wall
     for _, obj in pairs(self.gameMap.layers["Walls"].objects) do
-        self.walls = Wall:new(obj.x + obj.width/2,
-            obj.y + obj.height/2, obj.width, obj.height, self.world)
+        table.insert(self.walls, Wall:new(obj.x + obj.width/2,
+            obj.y + obj.height/2, obj.width, obj.height, self.world))
     end
 
     -- Platforms
@@ -115,7 +125,6 @@ function Map:loadMap(mapNum, resetPlayer)
         self.flagFinish = Flag:new(obj.x + obj.width/2,
             obj.y + obj.height/2, obj.width, obj.height, self.world)
     end
-
 end
 
 function Map:destroy(gameOver)
