@@ -56,6 +56,12 @@ function love.update(dt)
         -- Map
         map:update(dt)
 
+        if gameController.jumpMap then
+            --map:destroy(false) -- Not gamer over
+            --map:loadMap(map.currentMap + 1, false)
+            gameController.jumpMap = false
+        end
+
         -- Timer
         timer:update(dt)
 
@@ -75,7 +81,7 @@ function love.update(dt)
                 cam.x = WIDTH/2
             end
             -- Upper Border
-            if cam.y > HEIGHT/2 then
+            if cam.y < HEIGHT/2 then
                 cam.y = HEIGHT/2
             end
 
@@ -160,7 +166,13 @@ function beginContact(a, b, coll)
         map:destroy()
     end
 
-    if (a:getUserData() == "Endpoint" and b:getUserData() == "Player") then
+    ---------------------------------------------------------------------------
+    --  Flag check
+    ---------------------------------------------------------------------------
+
+    if (a:getUserData() == "FlagFinish" and b:getUserData() == "Player") then
+        gameController.jumpMap = true
+        map.player.isChimney = true
     end
 
     ---------------------------------------------------------------------------
@@ -168,7 +180,7 @@ function beginContact(a, b, coll)
     ---------------------------------------------------------------------------
     if map.player:getLifes() <= 0 then
         gameController:setGameState(1)
-        map:destroy()
+        map:destroy(true)
     end
 end
 
@@ -194,8 +206,8 @@ function love.keypressed(key)
         map.player:jump()
     elseif gameController:getGameState() == 1 and key == "return" then
         -- Start the game from the menu
-        map:loadMap()
-        gameController:setGameState(2)
+        map:loadMap(1) -- First map
+        gameController:setGameState(2) -- start game
     elseif key == "escape" then
         love.event.quit()
     end

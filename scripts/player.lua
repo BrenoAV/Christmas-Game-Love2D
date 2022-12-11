@@ -16,6 +16,7 @@ function Player:new(x, y, width, height, world)
     o.speed = 240
     o.world = world
     o.dir = 1
+    o.limRight = WIDTH
 
     -- States
     o.isIdle = true
@@ -23,6 +24,7 @@ function Player:new(x, y, width, height, world)
     o.isJumping = false
     o.isGrounded = true
     o.allowJump = true
+    o.isChimney = false
 
     -- Lifes
     o.lifes = 2
@@ -35,13 +37,19 @@ function Player:new(x, y, width, height, world)
         o.spriteSheet:getWidth(),
         o.spriteSheet:getHeight())
 
+    -- 110 -> 95 -> 80 -> 65
+
+    o.frameHeight = 110
+    o.grid_chimney = anim8.newGrid(150, o.frameHeight,
+        o.spriteSheet:getWidth(),
+        o.spriteSheet:getHeight())
     -- Animations
     o.animations = {}
     o.animations.idle = anim8.newAnimation(o.grid('1-16', 1), 0.05)
     o.animations.jump = anim8.newAnimation(o.grid('1-16', 2), 0.05)
     o.animations.run = anim8.newAnimation(o.grid('1-11', 3), 0.05)
+    o.animations.chimney = anim8.newAnimation(o.grid_chimney('1-16', 1), 0.05)
     o.animations.actual = o.animations.idle
-    o.activateAnimation = true
 
     o.takenDamage = false
 
@@ -65,8 +73,11 @@ function Player:getPosition()
     return self.physics.body:getPosition()
 end
 
-function Player:update(dt)
+function Player:setPosition(x, y)
+    self.physics.body:setPosition(x, y)
+end
 
+function Player:update(dt)
     self:animation()
     self.animations.actual:update(dt)
     -- Movement
@@ -96,37 +107,45 @@ end
 function Player:move(dt)
     self.isRunning = false
     local px, py = self:getPosition()
-    if (love.keyboard.isDown("a") or love.keyboard.isDown("left")) and
+    if not self.isChimney then
+        if (love.keyboard.isDown("a") or love.keyboard.isDown("left")) and
             px > 0
-        then
-        self.physics.body:setX(self.physics.body:getX() - self.speed*dt)
-        self.isRunning = true
-        self.dir = -1
-    end
-    if (love.keyboard.isDown("d") or love.keyboard.isDown("right")) then
-        self.physics.body:setX(self.physics.body:getX() + self.speed*dt)
-        self.isRunning = true
-        self.dir = 1
+            then
+            self.physics.body:setX(self.physics.body:getX() - self.speed*dt)
+            self.isRunning = true
+            self.dir = -1
+        end
+        if (love.keyboard.isDown("d") or love.keyboard.isDown("right")) and
+            px < self.limRight
+            then
+            self.physics.body:setX(self.physics.body:getX() + self.speed*dt)
+            self.isRunning = true
+            self.dir = 1
+        end
     end
 end
 
 function Player:jump()
-    if self.isGrounded then
+    if self.isGrounded and not self.isChimney then
         self.isJumping = true
         self.physics.body:applyLinearImpulse(0, -2500)
     end
 end
 
 function Player:animation()
-    if self.isGrounded then
-        if self.isRunning then
-            self.animations.actual = self.animations.run
-        else
-            self.animations.actual = self.animations.idle
-        end
+    if self.isChimney then
+        self.animations.actual = self.animations.chimney
     else
-        if self.isJumping and self.activateAnimation then
-            self.animations.actual = self.animations.jump
+        if self.isGrounded then
+            if self.isRunning then
+                self.animations.actual = self.animations.run
+            else
+                self.animations.actual = self.animations.idle
+            end
+        else
+            if self.isJumping then
+                self.animations.actual = self.animations.jump
+            end
         end
     end
 end

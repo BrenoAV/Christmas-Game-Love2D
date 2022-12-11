@@ -8,10 +8,9 @@ function GameController:new()
     -- GameState
     -- 1 - Menu
     -- 2 - Game
-    self.gameState = 1
+    o.gameState = 1
 
-    -- GameOver
-    self.gameOver = false
+    o.jumpMap = false
 
     return o
 end

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="15" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="8" nextobjectid="6">
+ <editorsettings>
+  <export target="map2.lua" format="lua"/>
+ </editorsettings>
+ <tileset firstgid="1" name="tileset1-64x64" tilewidth="64" tileheight="64" tilecount="20" columns="5">
+  <image source="tileset1-64x64.png" width="320" height="256"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="15" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+17,18,18,18,18,18,18,18,18,19,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,17,18,18,18,18,18,18,18,18,18,18,18,19,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+17,18,18,18,18,18,18,18,18,18,18,19,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+5,5,5,5,5,5,5,5,5,5,5,5,5,5,5
+</data>
+ </layer>
+ <objectgroup id="4" name="PlayerSpawn">
+  <object id="5" x="65" y="163">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="EnemiesSpawn"/>
+ <objectgroup id="2" name="Platforms">
+  <object id="1" x="0" y="257" width="638" height="45"/>
+  <object id="2" x="129" y="640" width="828" height="45"/>
+  <object id="3" x="2" y="961" width="764" height="45"/>
+ </objectgroup>
+ <objectgroup id="3" name="Sea">
+  <object id="4" x="-1" y="1253" width="959" height="25"/>
+ </objectgroup>
+ <objectgroup id="6" name="FlagFinish"/>
+ <objectgroup id="7" name="Walls"/>
+</map>

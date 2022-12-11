@@ -52,7 +52,7 @@ function MaliCat:update(dt)
         end
     else
         if self.timer.timers[1].finished then
-            --self:throwSawBlade()
+            self:throwSawBlade()
             self.timer:resetTimer(1)
         end
     end

@@ -9,8 +9,8 @@ return {
   height = 10,
   tilewidth = 64,
   tileheight = 64,
-  nextlayerid = 15,
-  nextobjectid = 42,
+  nextlayerid = 17,
+  nextobjectid = 55,
   properties = {},
   tilesets = {
     {
@@ -41,6 +41,64 @@ return {
       wangsets = {},
       tilecount = 20,
       tiles = {}
+    },
+    {
+      name = "flag",
+      firstgid = 21,
+      class = "",
+      tilewidth = 87,
+      tileheight = 93,
+      spacing = 0,
+      margin = 0,
+      columns = 1,
+      image = "../sprites/flag.png",
+      imagewidth = 87,
+      imageheight = 93,
+      objectalignment = "unspecified",
+      tilerendersize = "tile",
+      fillmode = "stretch",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 87,
+        height = 93
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 1,
+      tiles = {}
+    },
+    {
+      name = "chimney",
+      firstgid = 22,
+      class = "",
+      tilewidth = 64,
+      tileheight = 64,
+      spacing = 0,
+      margin = 0,
+      columns = 2,
+      image = "../sprites/chimney.png",
+      imagewidth = 128,
+      imageheight = 128,
+      objectalignment = "unspecified",
+      tilerendersize = "tile",
+      fillmode = "stretch",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 64,
+        height = 64
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 4,
+      tiles = {}
     }
   },
   layers = {
@@ -69,8 +127,8 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 18, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 3, 3, 4, 0, 0, 0, 0, 0, 17, 18, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 7, 8, 8, 8, 8, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 3, 3, 4, 0, 0, 0, 0, 0, 17, 18, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 7, 8, 8, 8, 8, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         3, 3, 3, 3, 3, 11, 12, 8, 8, 8, 8, 8, 14, 15, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 3, 3, 3, 3, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
       }
     },
@@ -89,12 +147,12 @@ return {
       properties = {},
       objects = {
         {
-          id = 26,
+          id = 45,
           name = "",
           class = "",
           shape = "point",
-          x = 33.3333,
-          y = 506.667,
+          x = 2075.94,
+          y = 543.515,
           width = 0,
           height = 0,
           rotation = 0,
@@ -249,6 +307,32 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 52,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 2304.5,
+          y = 448.75,
+          width = 9.25,
+          height = 3.5,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 53,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 2422.5,
+          y = 448.75,
+          width = 8.75,
+          height = 3.5,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -288,6 +372,77 @@ return {
           y = 611.667,
           width = 767.334,
           height = 27.3333,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 15,
+      name = "FlagFinish",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 44,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 2314.83,
+          y = 450.75,
+          width = 106.833,
+          height = 1.58333,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 16,
+      name = "Walls",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 47,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 2304.5,
+          y = 452.5,
+          width = 126.833,
+          height = 54.1667,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 49,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 2335.33,
+          y = 508,
+          width = 62.6667,
+          height = 66.6667,
           rotation = 0,
           visible = true,
           properties = {}

@@ -1,7 +1,9 @@
 require('scripts.platform')
+require('scripts.wall')
 require('scripts.malicat')
 require('scripts.player')
 require('scripts.sea')
+require('scripts.flag')
 local sti = require('libraries/sti')
 
 Map = {}
@@ -13,15 +15,24 @@ function Map:new(world)
 
     o.world = world
     o.player = nil
+    o.walls = {}
     o.platforms = {}
     o.movementPlatforms = {}
     o.enemies = {}
     o.sea = {}
+    o.flagFinish = nil  -- Need to be destroyed
 
     -- Graphics
     o.background = love.graphics.newImage("maps/backgrounds/BG.png")
 
     o.gameMap = nil
+
+    -- All maps
+    o.currentMap = 1
+    o.maps = {
+        "map1",
+        "map2"
+    }
     return o
 end
 
@@ -49,31 +60,37 @@ function Map:drawLayer(layer)
         self.player:draw()
     end
 
-
     -- Enemies
     for _,e in ipairs(self.enemies) do
         e:draw()
     end
-
-    -- platforms
-    -- for _,p in ipairs(self.platforms) do
-    --     p:draw()
-    -- end
-
 end
 
 function Map:drawBackground()
     love.graphics.draw(self.background)
 end
 
-function Map:loadMap(mapName)
-    mapName = mapName or "map1"
+function Map:loadMap(mapNum, resetPlayer)
+    mapNum = mapNum or 1
+    resetPlayer = resetPlayer or true
+    self.currentMap = mapNum
 
-    self.gameMap = sti("maps/" .. mapName .. ".lua")
+    self.gameMap = sti("maps/" .. self.maps[mapNum] .. ".lua")
 
     -- Player
     for _, obj in pairs(self.gameMap.layers["PlayerSpawn"].objects) do
-        self.player = Player:new(obj.x, obj.y, 40, 80, self.world)
+        if resetPlayer then
+            self.player = Player:new(obj.x, obj.y, 40, 80, self.world)
+        else
+            self.player:setPosition(obj.x, obj.y)
+        end
+        self.player.limRight = self.gameMap.width * self.gameMap.tilewidth
+    end
+
+    -- Wall
+    for _, obj in pairs(self.gameMap.layers["Walls"].objects) do
+        self.walls = Wall:new(obj.x + obj.width/2,
+            obj.y + obj.height/2, obj.width, obj.height, self.world)
     end
 
     -- Platforms
@@ -93,10 +110,20 @@ function Map:loadMap(mapName)
             obj.y + obj.height/2, obj.width, obj.height, self.world))
     end
 
+    -- Flags
+    for _, obj in pairs(self.gameMap.layers["FlagFinish"].objects) do
+        self.flagFinish = Flag:new(obj.x + obj.width/2,
+            obj.y + obj.height/2, obj.width, obj.height, self.world)
+    end
+
 end
 
-function Map:destroy()
-    self.player:destroy()
+function Map:destroy(gameOver)
+    gameOver = gameOver or true
+
+    if gameOver then
+        self.player:destroy()
+    end
 
     -- enemies
     local i = #self.enemies
@@ -118,4 +145,28 @@ function Map:destroy()
         i = i - 1
     end
 
+    -- walls
+    local i = #self.walls
+    while i > -1 do
+        if self.walls[i] ~= nil then
+            self.walls[i]:destroy()
+        end
+        table.remove(self.walls, i)
+        i = i - 1
+    end
+
+    -- sea
+    local i = #self.sea
+    while i > -1 do
+        if self.sea[i] ~= nil then
+            self.sea[i]:destroy()
+        end
+        table.remove(self.sea, i)
+        i = i - 1
+    end
+
+end
+
+function Map:allMaps()
+    return self.maps
 end

@@ -1,14 +1,15 @@
-Sea = {}
+Flag = {}
 
-function Sea:new(x, y, width, height, world)
+function Flag:new(x, y, width, height, world)
     local o = {}
     setmetatable(o, self)
     self.__index = self
 
     o.x = x
     o.y = y
-    o.width = width
-    o.height = height
+    o.radiusX = width
+    o.radiusY = height
+    o.world = world
 
     -- Physics
     o.physics = {}
@@ -16,12 +17,8 @@ function Sea:new(x, y, width, height, world)
     o.physics.shape = love.physics.newRectangleShape(width, height)
     o.physics.fixture = love.physics.newFixture(o.physics.body,
         o.physics.shape)
-    o.physics.fixture:setUserData("Sea")
+    o.physics.fixture:setUserData("FlagFinish")
     o.physics.fixture:setSensor(true)
 
     return o
-end
-
-function Sea:destroy()
-    self.physics.fixture:destroy()
 end
