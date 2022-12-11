@@ -28,6 +28,7 @@ function Interface:drawUI(lifes)
     ---
     -- LIFES
     ---
+    love.graphics.setFont(self.menuFont)
     love.graphics.draw(self.spritePanettone, 10, 10)
     love.graphics.print(lifes, 50, 12)
 end

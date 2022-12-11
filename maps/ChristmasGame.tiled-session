@@ -1,6 +1,7 @@
 {
-    "activeFile": "",
+    "activeFile": "map1.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
         "": {
@@ -8,10 +9,10 @@
         },
         "map1.tmx": {
             "scale": 1.5,
-            "selectedLayer": 6,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 2262.6666666666665,
-                "y": 441.99999999999994
+                "x": 131.33333333333331,
+                "y": 698
             }
         },
         "map1.tmx#chimney": {
@@ -36,13 +37,15 @@
         }
     },
     "last.exportedFilePath": "/home/brenoav/GitHub/Christmas-Game-Love2D/maps",
-    "last.imagePath": "/home/stream/Desktop/Christmas-Game-Love2D/sprites",
+    "last.imagePath": "/home/brenoav/GitHub/Christmas-Game-Love2D/maps",
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
+        "map1.tmx"
     ],
     "project": "ChristmasGame.tiled-project",
     "recentFiles": [
+        "map1.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {

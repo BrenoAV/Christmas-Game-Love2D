@@ -1,5 +1,6 @@
 local anim8 = require("libraries.anim8.anim8")
 require('scripts.timer')
+require('scripts.audio')
 
 Player = {}
 
@@ -18,6 +19,10 @@ function Player:new(x, y, width, height, world)
     o.dir = 1
     o.limRight = WIDTH
 
+    -- Audio
+    o.audio = Audio:new()
+    o.audio:loadJump("audios/jump.wav")
+
     -- States
     o.isIdle = true
     o.isRunning = false
@@ -27,7 +32,7 @@ function Player:new(x, y, width, height, world)
     o.isChimney = false
 
     -- Lifes
-    o.lifes = 2
+    o.lifes = 3
     o.timer = Timer:new()
     o.timer:addTimer(1, 0, 0.2)
     o.timer:addTimer(2, 0, 1)
@@ -133,7 +138,7 @@ end
 
 function Player:move(dt)
     self.isRunning = false
-    local px, py = self:getPosition()
+    local px, _ = self:getPosition()
     if not self.isChimney then
         if (love.keyboard.isDown("a") or love.keyboard.isDown("left")) and
             px > 0
@@ -154,6 +159,7 @@ end
 
 function Player:jump()
     if self.isGrounded and not self.isChimney then
+        self.audio:playJump()
         self.isJumping = true
         self.physics.body:applyLinearImpulse(0, -2500)
     end
@@ -200,7 +206,7 @@ function Player:decreaseLifes(n, normX, normY)
 end
 
 function Player:resetLifes()
-    self.lifes = 5
+    self.lifes = 3
 end
 
 function Player:getLifes()

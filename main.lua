@@ -2,18 +2,15 @@ require('love')
 require('scripts.map')
 require('scripts.game_controller')
 require('scripts.interface')
+require("scripts.audio")
 Camera = require('libraries.hump.camera')
-
-count = 0
-
--- Timer
-local timer = nil
 
 -- Local Variables
 local world = nil
 local cam = nil
 local gameController = nil
 local interface = nil
+local audio = nil
 
 -- Map
 local map = nil
@@ -37,12 +34,13 @@ function love.load()
     -- interface
     interface = Interface:new()
 
-    -- timer
-    timer = Timer:new()
-    timer:addTimer(1, 0, 0.15)
-
     -- camera
     cam = Camera()
+
+    -- audio
+    audio = Audio:new()
+    audio:loadMusic("audios/winter_snow.mp3")
+    audio:playMusic()
 end
 
 function love.update(dt)
@@ -206,11 +204,6 @@ end
 
 function debug()
     -- Debug
-    --local mx, my = love.mouse.getPosition()
-    --love.graphics.print("x = " .. mx .. " | " .. "y = " .. my, 0, 0)
-    --local x, y = 200, 100
-    --love.graphics.line(x, 0, x, HEIGHT) -- Vertical
-    --love.graphics.line(0, y, WIDTH, y) -- Horizontal
     if love.keyboard.isDown("c") then
         for _, body in pairs(world:getBodies()) do
           for _, fixture in pairs(body:getFixtures()) do

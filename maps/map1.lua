@@ -10,7 +10,7 @@ return {
   tilewidth = 64,
   tileheight = 64,
   nextlayerid = 17,
-  nextobjectid = 57,
+  nextobjectid = 58,
   properties = {},
   tilesets = {
     {
@@ -80,7 +80,7 @@ return {
       spacing = 0,
       margin = 0,
       columns = 2,
-      image = "../sprites/chimney.png",
+      image = "chimney.png",
       imagewidth = 128,
       imageheight = 128,
       objectalignment = "unspecified",
@@ -147,12 +147,12 @@ return {
       properties = {},
       objects = {
         {
-          id = 56,
+          id = 57,
           name = "",
           class = "",
           shape = "point",
-          x = 2115.33,
-          y = 525.333,
+          x = 40,
+          y = 512.667,
           width = 0,
           height = 0,
           rotation = 0,
