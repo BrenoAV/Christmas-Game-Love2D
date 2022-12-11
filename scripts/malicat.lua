@@ -6,7 +6,7 @@ require('scripts.saw_blade')
 
 MaliCat = {}
 
-function MaliCat:new(x, y, world)
+function MaliCat:new(x, y, activateSawBlade, world)
     local width, height = 35, 90
 
     local o = Enemy:new(x, y, width, height, world)
@@ -16,6 +16,7 @@ function MaliCat:new(x, y, world)
     o.speed = 150
 
     -- SawBlade
+    o.activateSawBlade = activateSawBlade
     o.sawBlade = nil
     o.timer = Timer:new() -- timer to spawn the blade
     o.timer:addTimer(1, 0, 2) -- X seconds
@@ -93,12 +94,14 @@ end
 
 -- sawBlade
 function MaliCat:throwSawBlade()
-    local ex, ey = self:getPosition()
-    -- destroy if already exists
-    if self.sawBlade ~= nil then
-        self.sawBlade:destroy()
+    if self.activateSawBlade then
+        local ex, ey = self:getPosition()
+        -- destroy if already exists
+        if self.sawBlade ~= nil then
+            self.sawBlade:destroy()
+        end
+        self.sawBlade = SawBlade:new(ex, ey, self.speed, self.dir, self.world)
     end
-    self.sawBlade = SawBlade:new(ex, ey, self.speed, self.dir, self.world)
 end
 
 function MaliCat:destroySawBlade()

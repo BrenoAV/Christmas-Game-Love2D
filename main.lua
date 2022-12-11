@@ -20,6 +20,7 @@ WIDTH = love.graphics.getWidth()
 HEIGHT = love.graphics.getHeight()
 
 function love.load()
+
     -- gamecontroller
     gameController = GameController:new()
 
@@ -55,7 +56,7 @@ function love.update(dt)
 
         if gameController.jumpMap and not map.player.isChimney then
             map:destroy(false) -- Not gamer over
-            map:loadMap(map.currentMap + 1, false)
+            map:loadMap(map.currentMap, false)
             gameController.jumpMap = false
         end
 

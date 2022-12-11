@@ -5,6 +5,7 @@ require('scripts.player')
 require('scripts.sea')
 require('scripts.flag')
 require('scripts.text')
+require('scripts.endpoint')
 local sti = require('libraries/sti')
 
 Map = {}
@@ -22,6 +23,7 @@ function Map:new(world)
     o.movementPlatforms = {}
     o.enemies = {}
     o.sea = {}
+    o.endpoints = {}
     o.flagFinish = nil  -- Need to be destroyed
 
     -- Graphics
@@ -54,6 +56,7 @@ end
 
 function Map:drawLayer()
     self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 1"])
+    self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 2"])
     self.gameMap:drawLayer(self.gameMap.layers["Texts"])
 
     -- player
@@ -110,8 +113,8 @@ function Map:loadMap(mapNum, resetPlayer)
     end
 
     -- Enemies
-    for _, obj in pairs(self.gameMap.layers["EnemiesSpawn"].objects) do
-        table.insert(self.enemies, MaliCat:new(obj.x, obj.y, self.world))
+    for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
+        table.insert(self.enemies, MaliCat:new(obj.x, obj.y, false, self.world))
     end
 
     -- Sea
@@ -121,10 +124,16 @@ function Map:loadMap(mapNum, resetPlayer)
     end
 
     -- Flags
-    for _, obj in pairs(self.gameMap.layers["FlagFinish"].objects) do
+    for _, obj in pairs(self.gameMap.layers["ChimneyFinish"].objects) do
         self.flagFinish = Flag:new(obj.x + obj.width/2,
             obj.y + obj.height/2, obj.width, obj.height, self.world)
     end
+
+    -- Endpoints
+    for _, obj in pairs(self.gameMap.layers["Endpoints"].objects) do
+        table.insert(self.endpoints, EndPoint:new(obj.x, obj.y, self.world))
+    end
+
 end
 
 function Map:destroy(gameOver)

@@ -68,7 +68,7 @@ function Player:new(x, y, width, height, world)
         o.physics.shape, 1)
     o.physics.fixture:setUserData("Player")
     o.physics.fixture:setCategory(2)
-    o.physics.fixture:setMask(4)
+    o.physics.fixture:setMask(4) -- Endpoints
 
     return o
 
@@ -120,14 +120,14 @@ function Player:draw()
 
     if self.isChimney then
         if self.frameCountHeight == 1 then
-            self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 85)
+            self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 87)
         else
             self.grid_chimney = anim8.newGrid(150, self.frameHeight[self.frameCountHeight],
                         self.spriteSheet:getWidth(),
                 self.spriteSheet:getHeight())
             self.animations.actual = anim8.newAnimation(self.grid_chimney('1-16', 1), 0.01)
 
-            self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 102 - 15*self.frameCountHeight)
+            self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 105 - 15*self.frameCountHeight)
         end
     else
         self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 82)

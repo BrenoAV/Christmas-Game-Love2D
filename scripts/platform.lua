@@ -1,21 +1,6 @@
+require('scripts.endpoint')
+
 Platform = {}
-
-local function createEndPoint(x, y, world)
-    local endPoint = {}
-    endPoint.x = x
-    endPoint.y = y
-    endPoint.physics = {}
-    endPoint.physics.body = love.physics.newBody(world, endPoint.x,
-        endPoint.y, "static")
-    endPoint.physics.shape = love.physics.newRectangleShape(5, 5)
-    endPoint.physics.fixture = love.physics.newFixture(
-        endPoint.physics.body,
-        endPoint.physics.shape)
-    endPoint.physics.fixture:setUserData("Endpoint")
-    endPoint.physics.fixture:setSensor(true)
-
-    return endPoint
-end
 
 local function createJumperArea(x, y, width, height, world)
     local jumperArea = {}
@@ -57,13 +42,13 @@ function Platform:new(x, y, width, height, world)
         o.physics.shape)
     o.physics.fixture:setUserData("Wall")
     o.physics.fixture:setCategory(3)
-    o.physics.fixture:setMask(3)
+    o.physics.fixture:setMask(4) -- endpoints
     o.physics.fixture:setMask(6) -- objects
-    o.physics.fixture:setMask(7) -- objects
 
     -- Endpoints
-    o.endPointLeft = createEndPoint(o.x - o.width/2, o.y - o.height/2 - 20, o.world)
-    o.endPointRight = createEndPoint(o.x + o.width/2, o.y - o.height/2 - 20, o.world)
+
+    o.endPointLeft = EndPoint:new(o.x - o.width/2, o.y - o.height/2 - 20, o.world)
+    o.endPointRight = EndPoint:new(o.x + o.width/2, o.y - o.height/2 - 20, o.world)
 
     -- JumperArea
     o.jumperArea = createJumperArea(o.x, o.y, o.width, o.height, o.world)

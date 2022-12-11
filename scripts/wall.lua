@@ -18,6 +18,8 @@ function Wall:new(x, y, width, height, world)
     o.physics.fixture = love.physics.newFixture(o.physics.body,
         o.physics.shape, 1000)
     o.physics.fixture:setUserData("Wall")
+    o.physics.fixture:setCategory(3)
+    o.physics.fixture:setMask(6) -- Objects
 
     return o
 end
