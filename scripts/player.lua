@@ -28,8 +28,9 @@ function Player:new(x, y, width, height, world)
 
     -- Lifes
     o.lifes = 2
-    o.timerOneShot = Timer:new()
-    o.timerOneShot:addTimerOneShot(1, 0, 0.1)
+    o.timer = Timer:new()
+    o.timer:addTimer(1, 0, 0.1)
+    o.timer:addTimer(2, 0, 3)
 
     -- Sprites
     o.spriteSheet = love.graphics.newImage("sprites/playerSheet.png")
@@ -84,11 +85,17 @@ function Player:update(dt)
     self:move(dt)
 
     -- Timers
-    self.timerOneShot:update(dt)
+    self.timer:update(dt)
 
     -- Animation Taken Damage
-    if self.timerOneShot.timersOneShot[1].finished then
+    if self.timer.timers[1].finished then
         self.takenDamage = false
+    end
+
+    -- Animation Chimney
+    if self.timer.timers[2].finished then
+        self.timer.timers[2].finished = false
+        self.timer.timers[2].actualValue = 0
     end
 end
 
@@ -165,11 +172,10 @@ end
 function Player:decreaseLifes(n, normX, normY)
     normX = normX or 0
     normY = normY or 0
-    print("normX = " .. normX .. " | normY = " .. normY)
-
     self.lifes = self.lifes - n
     self.takenDamage = true
-    self.timerOneShot:startTimerOneShot(1)
+    self.timer:resetTimer(1)
+    self.timer:startTimer(1)
     self.physics.body:applyLinearImpulse(1000 * -normX, 3000 * -normY)
 end
 

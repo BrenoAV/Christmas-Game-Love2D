@@ -2,7 +2,6 @@ require('love')
 require('scripts.map')
 require('scripts.game_controller')
 require('scripts.interface')
-require('scripts.timer')
 Camera = require('libraries.hump.camera')
 
 count = 0
@@ -60,15 +59,6 @@ function love.update(dt)
             --map:destroy(false) -- Not gamer over
             --map:loadMap(map.currentMap + 1, false)
             gameController.jumpMap = false
-        end
-
-        -- Timer
-        timer:update(dt)
-
-        -- animations bug
-        if timer.timers[1].finished then
-            map.player.activateAnimation = true
-            timer.timers[1].pauseLoop = true
         end
 
         -- camera

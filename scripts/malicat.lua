@@ -54,6 +54,7 @@ function MaliCat:update(dt)
         if self.timer.timers[1].finished then
             self:throwSawBlade()
             self.timer:resetTimer(1)
+            self.timer:startTimer(1)
         end
     end
 
