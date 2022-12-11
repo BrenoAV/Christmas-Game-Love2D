@@ -55,9 +55,9 @@ function love.update(dt)
         -- Map
         map:update(dt)
 
-        if gameController.jumpMap then
-            --map:destroy(false) -- Not gamer over
-            --map:loadMap(map.currentMap + 1, false)
+        if gameController.jumpMap and not map.player.isChimney then
+            map:destroy(false) -- Not gamer over
+            map:loadMap(map.currentMap + 1, false)
             gameController.jumpMap = false
         end
 
@@ -163,6 +163,7 @@ function beginContact(a, b, coll)
     if (a:getUserData() == "FlagFinish" and b:getUserData() == "Player") then
         gameController.jumpMap = true
         map.player.isChimney = true
+        map.player.timer:startTimer(2)
     end
 
     ---------------------------------------------------------------------------

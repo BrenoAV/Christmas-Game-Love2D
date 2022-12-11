@@ -29,8 +29,8 @@ function Player:new(x, y, width, height, world)
     -- Lifes
     o.lifes = 2
     o.timer = Timer:new()
-    o.timer:addTimer(1, 0, 0.1)
-    o.timer:addTimer(2, 0, 3)
+    o.timer:addTimer(1, 0, 0.2)
+    o.timer:addTimer(2, 0, 1)
 
     -- Sprites
     o.spriteSheet = love.graphics.newImage("sprites/playerSheet.png")
@@ -38,18 +38,17 @@ function Player:new(x, y, width, height, world)
         o.spriteSheet:getWidth(),
         o.spriteSheet:getHeight())
 
-    -- 110 -> 95 -> 80 -> 65
-
-    o.frameHeight = 110
-    o.grid_chimney = anim8.newGrid(150, o.frameHeight,
+    o.frameHeight = {163, 110, 95, 80, 65, 50, 35}
+    o.frameCountHeight = 1
+    o.grid_chimney = anim8.newGrid(150, o.frameHeight[1],
         o.spriteSheet:getWidth(),
         o.spriteSheet:getHeight())
+
     -- Animations
     o.animations = {}
     o.animations.idle = anim8.newAnimation(o.grid('1-16', 1), 0.05)
     o.animations.jump = anim8.newAnimation(o.grid('1-16', 2), 0.05)
     o.animations.run = anim8.newAnimation(o.grid('1-11', 3), 0.05)
-    o.animations.chimney = anim8.newAnimation(o.grid_chimney('1-16', 1), 0.05)
     o.animations.actual = o.animations.idle
 
     o.takenDamage = false
@@ -80,7 +79,6 @@ end
 
 function Player:update(dt)
     self:animation()
-    self.animations.actual:update(dt)
     -- Movement
     self:move(dt)
 
@@ -94,9 +92,16 @@ function Player:update(dt)
 
     -- Animation Chimney
     if self.timer.timers[2].finished then
-        self.timer.timers[2].finished = false
-        self.timer.timers[2].actualValue = 0
+        if self.frameCountHeight == #self.frameHeight then
+            self.isChimney = false
+        else
+            self:updateFrameChimney()
+            self.timer:resetTimer(2)
+            self.timer:startTimer(2)
+        end
     end
+
+    self.animations.actual:update(dt)
 end
 
 function Player:draw()
@@ -107,7 +112,22 @@ function Player:draw()
     else
         love.graphics.setColor(1, 1, 1)
     end
-    self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 82)
+
+    if self.isChimney then
+        if self.frameCountHeight == 1 then
+            self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 85)
+        else
+            self.grid_chimney = anim8.newGrid(150, self.frameHeight[self.frameCountHeight],
+                        self.spriteSheet:getWidth(),
+                self.spriteSheet:getHeight())
+            self.animations.actual = anim8.newAnimation(self.grid_chimney('1-16', 1), 0.01)
+
+            self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 102 - 15*self.frameCountHeight)
+        end
+    else
+        self.animations.actual:draw(self.spriteSheet, px, py, nil, self.dir, 1, 62, 82)
+    end
+
     love.graphics.setColor(1, 1, 1)
 end
 
@@ -141,7 +161,7 @@ end
 
 function Player:animation()
     if self.isChimney then
-        self.animations.actual = self.animations.chimney
+        self.animations.actual = self.animations.idle
     else
         if self.isGrounded then
             if self.isRunning then
@@ -185,4 +205,8 @@ end
 
 function Player:getLifes()
     return self.lifes
+end
+
+function Player:updateFrameChimney()
+    self.frameCountHeight = self.frameCountHeight + 1
 end
