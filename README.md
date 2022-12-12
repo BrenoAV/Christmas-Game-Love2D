@@ -1,14 +1,15 @@
 # Christmas-Game-Love2D
 
-This repository is designated to store a Christmas Game (Platform Game) using [Löve2D](https://www.love2d.org). 
+This repository is designated to store a Christmas Game (Platform Game) using [Löve2D](https://www.love2d.org).
 
 # DOWNLOAD
 
-**Download link (demo):** https://github.com/BrenoAV/Christmas-Game-Love2D/releases/download/Demo/ChristmasGameDemo.zip 
+**Download link (demo):** https://github.com/BrenoAV/Christmas-Game-Love2D/releases/download/Demo/ChristmasGameDemo.zip
 
 # GRAPHICS
 
 - [GameArt2D](https://www.gameart2d.com/freebies.html)
+- twitch.tv/mrchuaschinai
 
 # FONTS
 

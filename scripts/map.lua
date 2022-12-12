@@ -22,7 +22,7 @@ function Map:new(world)
     o.walls = {}
     o.platforms = {}
     o.movementPlatforms = {}
-    o.enemies = {}
+    o.maliCats = {}
     o.sea = {}
     o.endpoints = {}
     o.chimneyFlag = nil
@@ -45,6 +45,13 @@ function Map:new(world)
              speed = 250,
              saw = false
          }
+        },
+        -- Map2
+        {name = "map2",
+         malicat = {
+             speed = 250,
+             saw = false
+         }
         }
     }
     return o
@@ -59,7 +66,7 @@ function Map:update(dt)
     end
 
     -- Enemies
-    for _,e in ipairs(self.enemies) do
+    for _,e in ipairs(self.maliCats) do
         e:update(dt)
     end
 end
@@ -67,6 +74,7 @@ end
 function Map:drawLayer()
     self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 1"])
     self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 2"])
+    self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 3"])
     self.gameMap:drawLayer(self.gameMap.layers["Texts"])
 
     -- player
@@ -80,7 +88,7 @@ function Map:drawLayer()
     end
 
     -- Enemies
-    for _,e in pairs(self.enemies) do
+    for _,e in pairs(self.maliCats) do
         e:draw()
     end
 
@@ -102,10 +110,6 @@ function Map:loadMap(mapNum, resetPlayer)
 
     self.gameMap = sti("maps/" .. self.maps[mapNum]["name"] .. ".lua")
 
-    for _, obj in pairs(self.gameMap.layers["Texts"].objects) do
-        table.insert(self.texts, Text:new(obj.text, obj.x, obj.y))
-    end
-
     -- Player
     for _, obj in pairs(self.gameMap.layers["PlayerSpawn"].objects) do
         if resetPlayer then
@@ -114,6 +118,17 @@ function Map:loadMap(mapNum, resetPlayer)
             self.player:setPosition(obj.x, obj.y)
         end
         self.player.limRight = self.gameMap.width * self.gameMap.tilewidth
+    end
+
+    -- Texts
+    for _, obj in pairs(self.gameMap.layers["Texts"].objects) do
+        table.insert(self.texts, Text:new(obj.text, obj.x, obj.y))
+    end
+
+    -- Malicat
+    for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
+        table.insert(self.maliCats, MaliCat:new(obj.x, obj.y,
+            self.maps[mapNum]["malicat"]["speed"], self.maps[mapNum]["malicat"]["saw"], self.world))
     end
 
     -- Wall
@@ -126,12 +141,6 @@ function Map:loadMap(mapNum, resetPlayer)
     for _, obj in pairs(self.gameMap.layers["Platforms"].objects) do
         table.insert(self.platforms, Platform:new(obj.x + obj.width/2, obj.y + obj.height/2,
             obj.width, obj.height, self.world))
-    end
-
-    -- Enemies
-    for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
-        table.insert(self.enemies, MaliCat:new(obj.x, obj.y,
-            self.maps[mapNum]["malicat"]["speed"], self.maps[mapNum]["malicat"]["saw"], self.world))
     end
 
     -- Sea
@@ -156,6 +165,10 @@ function Map:loadMap(mapNum, resetPlayer)
         table.insert(self.gifts, Gift:new(obj.x, obj.y, self.world))
     end
 
+
+
+
+
 end
 
 function Map:destroy(gameOver)
@@ -166,17 +179,17 @@ function Map:destroy(gameOver)
     end
 
     -- enemies
-    local i = #self.enemies
+    local i = #self.maliCats
     while i > -1 do
-        if self.enemies[i] ~= nil then
-            self.enemies[i]:destroy()
+        if self.maliCats[i] ~= nil then
+            self.maliCats[i]:destroy()
         end
-        table.remove(self.enemies, i)
+        table.remove(self.maliCats, i)
         i = i - 1
     end
 
     -- platforms
-    local i = #self.platforms
+     i = #self.platforms
     while i > -1 do
         if self.platforms[i] ~= nil then
             self.platforms[i]:destroy()
@@ -186,7 +199,7 @@ function Map:destroy(gameOver)
     end
 
     -- walls
-    local i = #self.walls
+     i = #self.walls
     while i > -1 do
         if self.walls[i] ~= nil then
             self.walls[i]:destroy()
@@ -196,12 +209,29 @@ function Map:destroy(gameOver)
     end
 
     -- sea
-    local i = #self.sea
+     i = #self.sea
     while i > -1 do
         if self.sea[i] ~= nil then
             self.sea[i]:destroy()
         end
         table.remove(self.sea, i)
+        i = i - 1
+    end
+
+    -- texts
+     i = #self.texts
+    while i > -1 do
+        table.remove(self.texts, i)
+        i = i - 1
+    end
+
+    -- gifts
+     i = #self.gifts
+    while i > -1 do
+        if self.gifts[i] ~= nil then
+            self.gifts[i]:destroy()
+        end
+        table.remove(self.gifts, i)
         i = i - 1
     end
 

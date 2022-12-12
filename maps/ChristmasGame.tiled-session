@@ -1,14 +1,92 @@
 {
-    "activeFile": "",
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map1.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "map1.tmx": {
+            "expandedObjectLayers": [
+                16,
+                15,
+                11,
+                9,
+                8,
+                18
+            ],
+            "scale": 2,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 342,
+                "y": 957
+            }
+        },
+        "map1.tmx#Sign_2": {
+            "scaleInDock": 1
+        },
+        "map1.tmx#chimney": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "map1.tmx#tileset-winter": {
+            "scaleInDock": 1
+        },
+        "map2.tmx": {
+            "expandedObjectLayers": [
+                16,
+                15,
+                11,
+                9,
+                8
+            ],
+            "scale": 1,
+            "selectedLayer": 8,
+            "viewCenter": {
+                "x": -50,
+                "y": 713
+            }
+        },
+        "map2.tmx#Objects Winter": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.33,
+            "scaleInEditor": 1
+        },
+        "map2.tmx#chimney": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "map2.tmx#tileset-winter": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        }
     },
     "last.exportedFilePath": "/home/stream/Desktop/Christmas-Game-Love2D/maps",
+    "last.imagePath": "/home/stream/Desktop/Christmas-Game-Love2D/maps/Objects",
     "map.lastUsedExportFilter": "All Files (*)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 60,
     "openFiles": [
+        "map1.tmx",
+        "map2.tmx"
     ],
     "project": "ChristmasGame.tiled-project",
     "recentFiles": [
-    ]
+        "map2.tmx",
+        "map1.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    },
+    "tileset.type": 0
 }

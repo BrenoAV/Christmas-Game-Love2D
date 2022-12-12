@@ -24,7 +24,7 @@ function love.load()
     gameController = GameController:new()
 
     -- physics
-    world = love.physics.newWorld(0, 1500, false)
+    world = love.physics.newWorld(0, 1800, false)
     world:setCallbacks(beginContact, endContact, preSolve, postSolve)
 
     -- objects
@@ -55,7 +55,7 @@ function love.update(dt)
 
         if gameController.jumpMap and not map.player.isChimney then
             map:destroy(false) -- Not gamer over
-            map:loadMap(map.currentMap, false)
+            map:loadMap(map.currentMap + 1, true)
             gameController.jumpMap = false
         end
 
@@ -99,7 +99,6 @@ function love.draw()
         cam:attach()
             -- do your drawing here
             map:drawLayer()
-            --map.player:draw()
             debug()
         cam:detach()
 
@@ -114,7 +113,7 @@ function beginContact(a, b, coll)
         map.player.isGrounded = true
     end
     if (a:getUserData() == "Endpoint" and b:getUserData() == "Enemy") then
-        for _,e in pairs(map.enemies) do
+        for _,e in pairs(map.maliCats) do
             if e.physics.fixture == b then
                 e:turnAround()
             end
@@ -125,14 +124,12 @@ function beginContact(a, b, coll)
     -- Lose Lifes
     ---------------------------------------------------------------------------
     if (a:getUserData() == "Enemy" and b:getUserData() == "Player") then
-        local normX, normY = coll:getNormal()
-        map.player:decreaseLifes(1, normX, normY)
 
-        for _,e in pairs(map.enemies) do
+        for i,e in pairs(map.maliCats) do
             if e.physics.fixture == a then
-                if (normX > 0 and e.dir < 0) or (normX < 0 and e.dir > 0) then
-                    e:turnAround()
-                end
+                map.player:decreaseLifes(1)
+                e:destroy()
+                table.remove(map.maliCats, i)
             end
         end
     end
@@ -141,7 +138,7 @@ function beginContact(a, b, coll)
         local normX, normY = coll:getNormal()
         map.player:decreaseLifes(1, normX, normY)
 
-        for _,e in pairs(map.enemies) do
+        for _,e in pairs(map.maliCats) do
             if b == e.sawBlade.physics.fixture then
                 e:destroySawBlade()
             end

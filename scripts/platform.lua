@@ -6,7 +6,7 @@ local function createJumperArea(x, y, width, height, world)
     local jumperArea = {}
     jumperArea.x = x
     jumperArea.y = y - height / 2 - 2
-    jumperArea.width = width - 20
+    jumperArea.width = width - 10
     jumperArea.height = 2
     jumperArea.physics = {}
     jumperArea.physics.body = love.physics.newBody(world, jumperArea.x,
@@ -67,4 +67,6 @@ function Platform:destroy()
     self.physics.fixture:destroy()
     self.endPointLeft.physics.fixture:destroy()
     self.endPointRight.physics.fixture:destroy()
+    self.jumperArea.physics.fixture:destroy()
+
 end

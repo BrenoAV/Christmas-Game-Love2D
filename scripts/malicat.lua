@@ -14,6 +14,7 @@ function MaliCat:new(x, y, speed, activateSawBlade, world)
     self.__index = self
 
     o.speed = speed
+    o.dir = 1
 
     -- SawBlade
     o.activateSawBlade = activateSawBlade

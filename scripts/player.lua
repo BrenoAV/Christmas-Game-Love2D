@@ -14,7 +14,8 @@ function Player:new(x, y, width, height, world)
     o.y = y -- Corner Left
     o.width = width
     o.height = height
-    o.speed = 240
+    o.speed = 300
+    o.jumpForce = -3000
     o.world = world
     o.dir = 1
     o.limRight = WIDTH
@@ -32,10 +33,10 @@ function Player:new(x, y, width, height, world)
     o.isChimney = false
 
     -- Lifes
-    o.lifes = 3
+    o.lifes = 5
     o.timer = Timer:new()
-    o.timer:addTimer(1, 0, 0.2)
-    o.timer:addTimer(2, 0, 1)
+    o.timer:addTimer(1, 0, 0.8) -- Damage
+    o.timer:addTimer(2, 0, 1)  -- Chimney Animation
 
     -- Sprites
     o.spriteSheet = love.graphics.newImage("sprites/playerSheet.png")
@@ -161,7 +162,7 @@ function Player:jump()
     if self.isGrounded and not self.isChimney then
         self.audio:playJump()
         self.isJumping = true
-        self.physics.body:applyLinearImpulse(0, -2500)
+        self.physics.body:applyLinearImpulse(0, self.jumpForce)
     end
 end
 
@@ -195,18 +196,16 @@ end
 -- Lifes System
 -------------------------------------------------------------------------------
 
-function Player:decreaseLifes(n, normX, normY)
-    normX = normX or 0
-    normY = normY or 0
+function Player:decreaseLifes(n)
     self.lifes = self.lifes - n
     self.takenDamage = true
     self.timer:resetTimer(1)
     self.timer:startTimer(1)
-    self.physics.body:applyLinearImpulse(1000 * -normX, 3000 * -normY)
+    self.physics.body:applyLinearImpulse(0, 0)
 end
 
 function Player:resetLifes()
-    self.lifes = 3
+    self.lifes = 1
 end
 
 function Player:getLifes()
