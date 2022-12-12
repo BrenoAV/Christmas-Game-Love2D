@@ -6,7 +6,7 @@ local function createJumperArea(x, y, width, height, world)
     local jumperArea = {}
     jumperArea.x = x
     jumperArea.y = y - height / 2 - 2
-    jumperArea.width = width - 10
+    jumperArea.width = width - 20
     jumperArea.height = 2
     jumperArea.physics = {}
     jumperArea.physics.body = love.physics.newBody(world, jumperArea.x,
@@ -42,6 +42,7 @@ function Platform:new(x, y, width, height, world)
         o.physics.shape)
     o.physics.fixture:setUserData("Wall")
     o.physics.fixture:setCategory(3)
+    o.physics.fixture:setFriction(1)
     o.physics.fixture:setMask(4) -- endpoints
     o.physics.fixture:setMask(6) -- objects
 

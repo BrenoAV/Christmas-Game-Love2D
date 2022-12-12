@@ -55,7 +55,12 @@ function love.update(dt)
 
         if gameController.jumpMap and not map.player.isChimney then
             map:destroy(false) -- Not gamer over
-            map:loadMap(map.currentMap + 1, true)
+            local nextMap = map.currentMap + 1
+            if nextMap < #map.maps + 1 then
+                map:loadMap(nextMap, false)
+            else
+                map:loadMap(1, true)
+            end
             gameController.jumpMap = false
         end
 

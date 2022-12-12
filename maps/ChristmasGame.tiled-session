@@ -9,23 +9,28 @@
     ],
     "fileStates": {
         "": {
-            "scaleInDock": 1
+            "scaleInDock": 0.5
         },
         "map1.tmx": {
             "expandedObjectLayers": [
                 16,
+                18,
                 15,
-                11,
-                9,
                 8,
-                18
+                9,
+                11
             ],
-            "scale": 2,
-            "selectedLayer": 5,
+            "scale": 0.75,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 342,
-                "y": 957
+                "x": 690.6666666666666,
+                "y": 710.6666666666665
             }
+        },
+        "map1.tmx#Objects": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
         },
         "map1.tmx#Sign_2": {
             "scaleInDock": 1
@@ -42,15 +47,15 @@
             "expandedObjectLayers": [
                 16,
                 15,
-                11,
+                8,
                 9,
-                8
+                11
             ],
             "scale": 1,
-            "selectedLayer": 8,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": -50,
-                "y": 713
+                "x": 1117,
+                "y": 952
             }
         },
         "map2.tmx#Objects Winter": {
@@ -67,8 +72,8 @@
             "scaleInDock": 1
         }
     },
-    "last.exportedFilePath": "/home/stream/Desktop/Christmas-Game-Love2D/maps",
-    "last.imagePath": "/home/stream/Desktop/Christmas-Game-Love2D/maps/Objects",
+    "last.exportedFilePath": "/home/brenoav/GitHub/Christmas-Game-Love2D/maps",
+    "last.imagePath": "/home/brenoav/GitHub/Christmas-Game-Love2D/maps/Objects",
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
@@ -88,5 +93,5 @@
         "height": 64,
         "width": 64
     },
-    "tileset.type": 0
+    "tileset.type": 1
 }
