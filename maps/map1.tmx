@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="21" nextobjectid="98">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="22" nextobjectid="110">
  <editorsettings>
   <export target="map1.lua" format="lua"/>
  </editorsettings>
@@ -70,17 +70,20 @@
   <object id="76" x="970.948" y="765.833" width="207.437" height="36.3333">
    <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1" halign="center">Avoid the Malicat</text>
   </object>
-  <object id="84" x="1708.95" y="887.167" width="233.437" height="36.3333">
-   <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1" halign="center">You don't enjoy water</text>
+  <object id="84" x="1978.95" y="963.167" width="391.437" height="36.3333">
+   <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1" halign="center">Collect gifts and become a master</text>
   </object>
   <object id="96" x="2855.95" y="859.167" width="196.104" height="150.333">
    <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1">Enter into the chimney to finish the tutorial</text>
   </object>
+  <object id="109" x="1676.28" y="885.833" width="233.437" height="36.3333">
+   <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1" halign="center">You don't enjoy water</text>
+  </object>
  </objectgroup>
  <objectgroup id="9" name="Platforms">
   <object id="58" x="2" y="1087.33" width="893.333" height="190.667"/>
-  <object id="60" x="898.667" y="894.667" width="377.334" height="184"/>
-  <object id="61" x="1278.67" y="1021.33" width="513.333" height="261.334"/>
+  <object id="60" x="898.667" y="894.667" width="377.334" height="183"/>
+  <object id="61" x="1283.67" y="1021.33" width="508.333" height="261.334"/>
   <object id="65" x="641.333" y="960" width="189.333" height="46.6667"/>
   <object id="79" x="2881.33" y="1024.67" width="444" height="251.333"/>
   <object id="81" x="1856" y="1085.33" width="188" height="46.6667"/>
@@ -111,4 +114,18 @@
   <object id="90" x="3200.67" y="905.667" width="126" height="118.667"/>
  </objectgroup>
  <objectgroup id="19" name="Endpoints"/>
+ <objectgroup id="21" name="Gifts">
+  <object id="105" x="1956" y="1050">
+   <point/>
+  </object>
+  <object id="106" x="2204" y="1050">
+   <point/>
+  </object>
+  <object id="107" x="2463" y="1050">
+   <point/>
+  </object>
+  <object id="108" x="2722" y="1050">
+   <point/>
+  </object>
+ </objectgroup>
 </map>

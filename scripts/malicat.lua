@@ -6,14 +6,14 @@ require('scripts.saw_blade')
 
 MaliCat = {}
 
-function MaliCat:new(x, y, activateSawBlade, world)
+function MaliCat:new(x, y, speed, activateSawBlade, world)
     local width, height = 35, 90
 
     local o = Enemy:new(x, y, width, height, world)
     setmetatable(o, self)
     self.__index = self
 
-    o.speed = 150
+    o.speed = speed
 
     -- SawBlade
     o.activateSawBlade = activateSawBlade
@@ -53,8 +53,11 @@ function MaliCat:update(dt)
         end
     else
         if self.timer.timers[1].finished then
+            math.randomseed(os.time())
             self:throwSawBlade()
             self.timer:resetTimer(1)
+            local t = math.random(1, 3)
+            self.timer:addTimer(1, 0, t) -- t seconds
             self.timer:startTimer(1)
         end
     end

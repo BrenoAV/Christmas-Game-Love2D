@@ -103,7 +103,7 @@ function love.draw()
             debug()
         cam:detach()
 
-        interface:drawUI(map.player:getLifes())
+        interface:drawUI(map.player:getLifes(), map:getGiftsCollected())
     end
 end
 
@@ -152,6 +152,21 @@ function beginContact(a, b, coll)
     if (a:getUserData() == "Player" and b:getUserData() == "Sea") then
         gameController:setGameState(1)
         map:destroy()
+    end
+
+    ---------------------------------------------------------------------------
+    --  Collections
+    ---------------------------------------------------------------------------
+
+    if (a:getUserData() == "Gift" and b:getUserData() == "Player") then
+
+        for i,g in pairs(map.gifts) do
+            if a == g.physics.fixture then
+                map:addGifts()
+                table.remove(map.gifts, i)
+                g:destroy() -- Remove collider
+            end
+        end
     end
 
     ---------------------------------------------------------------------------

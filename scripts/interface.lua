@@ -17,6 +17,7 @@ function Interface:new()
     -- UI
     --
     o.spritePanettone = love.graphics.newImage("sprites/spritePanettone.png")
+    o.spriteBoxes = love.graphics.newImage("sprites/Crate.png")
 
     return o
 end
@@ -26,17 +27,13 @@ function Interface:drawMenu()
     love.graphics.printf(self.phraseMenu, 0, HEIGHT/2, WIDTH, "center")
 end
 
-function Interface:drawUI(lifes)
+function Interface:drawUI(lifes, gifts)
     ---
     -- LIFES
     ---
     love.graphics.setFont(self.menuFont)
     love.graphics.draw(self.spritePanettone, 10, 10)
+    love.graphics.draw(self.spriteBoxes, WIDTH - 60, 10, nil, 0.50, nil)
     love.graphics.print(lifes, 50, 12)
-end
-
-function Interface:drawTutorial(texts)
-    for i,text in pairs(texts) do
-        print(i)
-    end
+    love.graphics.print(gifts, WIDTH - 80, 15)
 end

@@ -6,6 +6,7 @@ require('scripts.sea')
 require('scripts.chimney_flag')
 require('scripts.text')
 require('scripts.endpoint')
+require('scripts.gift')
 local sti = require('libraries/sti')
 
 Map = {}
@@ -25,6 +26,10 @@ function Map:new(world)
     o.sea = {}
     o.endpoints = {}
     o.chimneyFlag = nil
+    o.gifts = {}
+
+    -- Collectables
+    o.giftsCollected = 0
 
     -- Graphics
     o.background = love.graphics.newImage("maps/backgrounds/BG.png")
@@ -34,8 +39,13 @@ function Map:new(world)
     -- All maps
     o.currentMap = 1
     o.maps = {
-        "map1",
-        "map2"
+        -- Map1
+        {name = "map1",
+         malicat = {
+             speed = 250,
+             saw = false
+         }
+        }
     }
     return o
 end
@@ -73,6 +83,11 @@ function Map:drawLayer()
     for _,e in pairs(self.enemies) do
         e:draw()
     end
+
+    -- Gifts
+    for _,g in pairs(self.gifts) do
+        g:draw()
+    end
 end
 
 function Map:drawBackground()
@@ -82,9 +97,10 @@ end
 function Map:loadMap(mapNum, resetPlayer)
     mapNum = mapNum or 1
     resetPlayer = resetPlayer or true
+
     self.currentMap = mapNum
 
-    self.gameMap = sti("maps/" .. self.maps[mapNum] .. ".lua")
+    self.gameMap = sti("maps/" .. self.maps[mapNum]["name"] .. ".lua")
 
     for _, obj in pairs(self.gameMap.layers["Texts"].objects) do
         table.insert(self.texts, Text:new(obj.text, obj.x, obj.y))
@@ -114,7 +130,8 @@ function Map:loadMap(mapNum, resetPlayer)
 
     -- Enemies
     for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
-        table.insert(self.enemies, MaliCat:new(obj.x, obj.y, false, self.world))
+        table.insert(self.enemies, MaliCat:new(obj.x, obj.y,
+            self.maps[mapNum]["malicat"]["speed"], self.maps[mapNum]["malicat"]["saw"], self.world))
     end
 
     -- Sea
@@ -132,6 +149,11 @@ function Map:loadMap(mapNum, resetPlayer)
     -- Endpoints
     for _, obj in pairs(self.gameMap.layers["Endpoints"].objects) do
         table.insert(self.endpoints, EndPoint:new(obj.x, obj.y, self.world))
+    end
+
+    -- Gifts
+    for _, obj in pairs(self.gameMap.layers["Gifts"].objects) do
+        table.insert(self.gifts, Gift:new(obj.x, obj.y, self.world))
     end
 
 end
@@ -187,4 +209,13 @@ end
 
 function Map:allMaps()
     return self.maps
+end
+
+function Map:addGifts(n)
+    n = n or 1
+    self.giftsCollected = self.giftsCollected + n
+end
+
+function Map:getGiftsCollected()
+    return self.giftsCollected
 end

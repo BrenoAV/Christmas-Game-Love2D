@@ -9,8 +9,8 @@ return {
   height = 20,
   tilewidth = 64,
   tileheight = 64,
-  nextlayerid = 21,
-  nextobjectid = 98,
+  nextlayerid = 22,
+  nextobjectid = 110,
   properties = {},
   tilesets = {
     {
@@ -255,13 +255,13 @@ return {
           name = "",
           class = "",
           shape = "text",
-          x = 1708.95,
-          y = 887.167,
-          width = 233.437,
+          x = 1978.95,
+          y = 963.167,
+          width = 391.437,
           height = 36.3333,
           rotation = 0,
           visible = true,
-          text = "You don't enjoy water",
+          text = "Collect gifts and become a master",
           fontfamily = "DejaVu Sans",
           pixelsize = 21,
           wrap = true,
@@ -283,6 +283,24 @@ return {
           fontfamily = "DejaVu Sans",
           pixelsize = 21,
           wrap = true,
+          properties = {}
+        },
+        {
+          id = 109,
+          name = "",
+          class = "",
+          shape = "text",
+          x = 1676.28,
+          y = 885.833,
+          width = 233.437,
+          height = 36.3333,
+          rotation = 0,
+          visible = true,
+          text = "You don't enjoy water",
+          fontfamily = "DejaVu Sans",
+          pixelsize = 21,
+          wrap = true,
+          halign = "center",
           properties = {}
         }
       }
@@ -322,7 +340,7 @@ return {
           x = 898.667,
           y = 894.667,
           width = 377.334,
-          height = 184,
+          height = 183,
           rotation = 0,
           visible = true,
           properties = {}
@@ -332,9 +350,9 @@ return {
           name = "",
           class = "",
           shape = "rectangle",
-          x = 1278.67,
+          x = 1283.67,
           y = 1021.33,
-          width = 513.333,
+          width = 508.333,
           height = 261.334,
           rotation = 0,
           visible = true,
@@ -618,6 +636,74 @@ return {
       parallaxy = 1,
       properties = {},
       objects = {}
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 21,
+      name = "Gifts",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 105,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 1956,
+          y = 1050,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 106,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 2204,
+          y = 1050,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 107,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 2463,
+          y = 1050,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 108,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 2722,
+          y = 1050,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     }
   }
 }
