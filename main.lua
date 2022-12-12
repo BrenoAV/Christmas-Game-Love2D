@@ -20,7 +20,6 @@ WIDTH = love.graphics.getWidth()
 HEIGHT = love.graphics.getHeight()
 
 function love.load()
-
     -- gamecontroller
     gameController = GameController:new()
 
@@ -159,7 +158,7 @@ function beginContact(a, b, coll)
     --  Flag check
     ---------------------------------------------------------------------------
 
-    if (a:getUserData() == "FlagFinish" and b:getUserData() == "Player") then
+    if (a:getUserData() == "ChimneyFlag" and b:getUserData() == "Player") then
         gameController.jumpMap = true
         map.player.isChimney = true
         map.player.timer:startTimer(2)

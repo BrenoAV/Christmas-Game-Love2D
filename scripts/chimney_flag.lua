@@ -1,6 +1,6 @@
-Flag = {}
+ChimneyFlag = {}
 
-function Flag:new(x, y, width, height, world)
+function ChimneyFlag:new(x, y, width, height, world)
     local o = {}
     setmetatable(o, self)
     self.__index = self
@@ -17,7 +17,7 @@ function Flag:new(x, y, width, height, world)
     o.physics.shape = love.physics.newRectangleShape(width, height)
     o.physics.fixture = love.physics.newFixture(o.physics.body,
         o.physics.shape)
-    o.physics.fixture:setUserData("FlagFinish")
+    o.physics.fixture:setUserData("ChimneyFlag")
     o.physics.fixture:setSensor(true)
 
     return o

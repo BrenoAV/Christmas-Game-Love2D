@@ -3,7 +3,7 @@ require('scripts.wall')
 require('scripts.malicat')
 require('scripts.player')
 require('scripts.sea')
-require('scripts.flag')
+require('scripts.chimney_flag')
 require('scripts.text')
 require('scripts.endpoint')
 local sti = require('libraries/sti')
@@ -24,7 +24,7 @@ function Map:new(world)
     o.enemies = {}
     o.sea = {}
     o.endpoints = {}
-    o.flagFinish = nil  -- Need to be destroyed
+    o.chimneyFlag = nil
 
     -- Graphics
     o.background = love.graphics.newImage("maps/backgrounds/BG.png")
@@ -125,7 +125,7 @@ function Map:loadMap(mapNum, resetPlayer)
 
     -- Flags
     for _, obj in pairs(self.gameMap.layers["ChimneyFinish"].objects) do
-        self.flagFinish = Flag:new(obj.x + obj.width/2,
+        self.chimneyFlag = ChimneyFlag:new(obj.x + obj.width/2,
             obj.y + obj.height/2, obj.width, obj.height, self.world)
     end
 
