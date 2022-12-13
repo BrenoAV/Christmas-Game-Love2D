@@ -10,7 +10,7 @@ return {
   tilewidth = 64,
   tileheight = 64,
   nextlayerid = 24,
-  nextobjectid = 139,
+  nextobjectid = 151,
   properties = {},
   tilesets = {
     {
@@ -517,7 +517,10 @@ return {
           height = 0,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["speed"] = 150,
+            ["throwSaw"] = false
+          }
         },
         {
           id = 112,
@@ -530,7 +533,10 @@ return {
           height = 0,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["speed"] = 150,
+            ["throwSaw"] = false
+          }
         },
         {
           id = 134,
@@ -543,7 +549,10 @@ return {
           height = 0,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["speed"] = 150,
+            ["throwSaw"] = false
+          }
         }
       }
     },
@@ -560,7 +569,60 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 140,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 1792,
+          y = 1189,
+          width = 1471,
+          height = 90,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 141,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 959.5,
+          y = 1189,
+          width = 192,
+          height = 90,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 142,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 1342,
+          y = 1189,
+          width = 192,
+          height = 90,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 143,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 3712,
+          y = 1190,
+          width = 192,
+          height = 90,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     },
     {
       type = "objectgroup",
@@ -648,7 +710,99 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 144,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 540,
+          y = 904,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 145,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 1055,
+          y = 903,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 146,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 2048,
+          y = 923,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 147,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 2552,
+          y = 691,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 148,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 1610,
+          y = 317,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 149,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 2303,
+          y = 82,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 150,
+          name = "",
+          class = "",
+          shape = "point",
+          x = 2966,
+          y = 360,
+          width = 0,
+          height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     }
   }
 }

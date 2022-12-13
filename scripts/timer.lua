@@ -20,6 +20,10 @@ function Timer:new()
     return o
 end
 
+function Timer:getTimer(n)
+    return self.timers[n]
+end
+
 function Timer:addTimer(n, startValue, limitValue)
     table.insert(self.timers, n, createTimer(startValue, limitValue))
 end

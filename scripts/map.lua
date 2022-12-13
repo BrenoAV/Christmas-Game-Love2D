@@ -7,6 +7,8 @@ require('scripts.chimney_flag')
 require('scripts.text')
 require('scripts.endpoint')
 require('scripts.gift')
+require('scripts.horizontal_platform')
+require('scripts.fallen_platform')
 local sti = require('libraries/sti')
 
 Map = {}
@@ -27,6 +29,8 @@ function Map:new(world)
     o.endpoints = {}
     o.chimneyFlag = nil
     o.gifts = {}
+    o.horizontalPlatforms = {}
+    o.fallenPlatforms = {}
 
     -- Collectables
     o.giftsCollected = 0
@@ -40,19 +44,11 @@ function Map:new(world)
     o.currentMap = 1
     o.maps = {
         -- Map1
-        {name = "map1",
-         malicat = {
-             speed = 250,
-             saw = false
-         }
-        },
+        {name = "map1"},
         -- Map2
-        {name = "map2",
-         malicat = {
-             speed = 250,
-             saw = false
-         }
-        }
+        {name = "map2"},
+        -- Map3
+        {name = "map3"}
     }
     return o
 end
@@ -66,16 +62,34 @@ function Map:update(dt)
     end
 
     -- Enemies
-    for _,e in ipairs(self.maliCats) do
+    for _,e in pairs(self.maliCats) do
         e:update(dt)
+    end
+
+    -- Horizontal Platforms
+    for _,hp in pairs(self.horizontalPlatforms) do
+        hp:update(dt)
+    end
+
+    -- Fallen Platforms
+    for _,fp in pairs(self.fallenPlatforms) do
+        fp:update(dt)
     end
 end
 
 function Map:drawLayer()
-    self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 1"])
-    self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 2"])
-    self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 3"])
-    self.gameMap:drawLayer(self.gameMap.layers["Texts"])
+    if self.gameMap.layers["Tile Layer 1"] then
+        self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 1"])
+    end
+    if self.gameMap.layers["Tile Layer 2"] then
+        self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 2"])
+    end
+    if self.gameMap.layers["Tile Layer 3"] then
+        self.gameMap:drawLayer(self.gameMap.layers["Tile Layer 3"])
+    end
+    if self.gameMap.layers["Texts"] then
+        self.gameMap:drawLayer(self.gameMap.layers["Texts"])
+    end
 
     -- player
     if self.player ~= nil then
@@ -95,6 +109,16 @@ function Map:drawLayer()
     -- Gifts
     for _,g in pairs(self.gifts) do
         g:draw()
+    end
+
+    -- Horizontal Platforms
+    for _,hp in pairs(self.horizontalPlatforms) do
+        hp:draw()
+    end
+
+    -- Fallen Platforms
+    for _,fp in pairs(self.fallenPlatforms) do
+        fp:draw()
     end
 end
 
@@ -121,54 +145,82 @@ function Map:loadMap(mapNum, resetPlayer)
     end
 
     -- Texts
-    for _, obj in pairs(self.gameMap.layers["Texts"].objects) do
-        table.insert(self.texts, Text:new(obj.text, obj.x, obj.y))
+    if self.gameMap.layers["Texts"] then
+        for _, obj in pairs(self.gameMap.layers["Texts"].objects) do
+            table.insert(self.texts, Text:new(obj.text, obj.x, obj.y))
+        end
     end
 
     -- Malicat
-    for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
-        table.insert(self.maliCats, MaliCat:new(obj.x, obj.y,
-            self.maps[mapNum]["malicat"]["speed"], self.maps[mapNum]["malicat"]["saw"], self.world))
+    if self.gameMap.layers["MalicatSpawn"] then
+        for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
+            table.insert(self.maliCats, MaliCat:new(obj.x, obj.y,
+                obj.properties.speed, obj.properties.throwSaw, self.world))
+        end
     end
 
     -- Wall
-    for _, obj in pairs(self.gameMap.layers["Walls"].objects) do
-        table.insert(self.walls, Wall:new(obj.x + obj.width/2,
-            obj.y + obj.height/2, obj.width, obj.height, self.world))
+    if self.gameMap.layers["Walls"] then
+        for _, obj in pairs(self.gameMap.layers["Walls"].objects) do
+            table.insert(self.walls, Wall:new(obj.x + obj.width/2,
+                obj.y + obj.height/2, obj.width, obj.height, self.world))
+        end
     end
 
     -- Platforms
-    for _, obj in pairs(self.gameMap.layers["Platforms"].objects) do
-        table.insert(self.platforms, Platform:new(obj.x + obj.width/2, obj.y + obj.height/2,
-            obj.width, obj.height, self.world))
+    if self.gameMap.layers["Platforms"] then
+        for _, obj in pairs(self.gameMap.layers["Platforms"].objects) do
+            table.insert(self.platforms, Platform:new(obj.x + obj.width/2, obj.y + obj.height/2,
+                obj.width, obj.height, self.world))
+        end
+    end
+
+    -- Horizontal Platforms
+    if self.gameMap.layers["HorizontalPlatforms"] then
+        for _, obj in pairs(self.gameMap.layers["HorizontalPlatforms"].objects) do
+            table.insert(self.horizontalPlatforms, HorizontalPlatform:new(obj.x + obj.width/2, obj.y + obj.height/2,
+                obj.width, obj.height, obj.properties.speed, obj.properties.distLimit - obj.width/2, self.world))
+        end
+    end
+
+    -- Horizontal Platforms
+    if self.gameMap.layers["FallenPlatforms"] then
+        for _, obj in pairs(self.gameMap.layers["FallenPlatforms"].objects) do
+            table.insert(self.fallenPlatforms, FallenPlatform:new(obj.x + obj.width/2, obj.y + obj.height/2,
+                obj.width, obj.height, obj.properties.timeToFallen, self.world))
+        end
     end
 
     -- Sea
-    for _, obj in pairs(self.gameMap.layers["Sea"].objects) do
-        table.insert(self.sea, Sea:new(obj.x + obj.width/2,
-            obj.y + obj.height/2, obj.width, obj.height, self.world))
+    if self.gameMap.layers["Sea"] then
+        for _, obj in pairs(self.gameMap.layers["Sea"].objects) do
+            table.insert(self.sea, Sea:new(obj.x + obj.width/2,
+                obj.y + obj.height/2, obj.width, obj.height, self.world))
+        end
     end
 
     -- Flags
-    for _, obj in pairs(self.gameMap.layers["ChimneyFinish"].objects) do
-        self.chimneyFlag = ChimneyFlag:new(obj.x + obj.width/2,
-            obj.y + obj.height/2, obj.width, obj.height, self.world)
+    if self.gameMap.layers["ChimneyFinish"] then
+        for _, obj in pairs(self.gameMap.layers["ChimneyFinish"].objects) do
+            self.chimneyFlag = ChimneyFlag:new(obj.x + obj.width/2,
+                obj.y + obj.height/2, obj.width, obj.height, self.world)
+        end
     end
 
     -- Endpoints
-    for _, obj in pairs(self.gameMap.layers["Endpoints"].objects) do
-        table.insert(self.endpoints, EndPoint:new(obj.x, obj.y, self.world))
+    if self.gameMap.layers["Endpoint"] then
+        for _, obj in pairs(self.gameMap.layers["Endpoints"].objects) do
+            table.insert(self.endpoints, EndPoint:new(obj.x, obj.y, self.world))
+        end
     end
+
 
     -- Gifts
-    for _, obj in pairs(self.gameMap.layers["Gifts"].objects) do
-        table.insert(self.gifts, Gift:new(obj.x, obj.y, self.world))
+    if self.gameMap.layers["Gifts"] then
+        for _, obj in pairs(self.gameMap.layers["Gifts"].objects) do
+            table.insert(self.gifts, Gift:new(obj.x, obj.y, self.world))
+        end
     end
-
-
-
-
-
 end
 
 function Map:destroy(gameOver)
@@ -195,6 +247,26 @@ function Map:destroy(gameOver)
             self.platforms[i]:destroy()
         end
         table.remove(self.platforms, i)
+        i = i - 1
+    end
+
+    -- horizontal platforms
+     i = #self.horizontalPlatforms
+    while i > -1 do
+        if self.horizontalPlatforms[i] ~= nil then
+            self.horizontalPlatforms[i]:destroy()
+        end
+        table.remove(self.horizontalPlatforms, i)
+        i = i - 1
+    end
+
+    -- fallen platforms
+     i = #self.fallenPlatforms
+    while i > -1 do
+        if self.fallenPlatforms[i] ~= nil then
+            self.fallenPlatforms[i]:destroy()
+        end
+        table.remove(self.fallenPlatforms, i)
         i = i - 1
     end
 

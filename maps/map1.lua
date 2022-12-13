@@ -573,7 +573,10 @@ return {
           height = 0,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["speed"] = 150,
+            ["throwSaw"] = false
+          }
         }
       }
     },
@@ -676,21 +679,6 @@ return {
           properties = {}
         }
       }
-    },
-    {
-      type = "objectgroup",
-      draworder = "topdown",
-      id = 19,
-      name = "Endpoints",
-      class = "",
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      parallaxx = 1,
-      parallaxy = 1,
-      properties = {},
-      objects = {}
     },
     {
       type = "objectgroup",

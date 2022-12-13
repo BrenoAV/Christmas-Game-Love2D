@@ -17,6 +17,7 @@ function Sea:new(x, y, width, height, world)
     o.physics.fixture = love.physics.newFixture(o.physics.body,
         o.physics.shape)
     o.physics.fixture:setUserData("Sea")
+    o.physics.fixture:setCategory(8)
     o.physics.fixture:setSensor(true)
 
     return o

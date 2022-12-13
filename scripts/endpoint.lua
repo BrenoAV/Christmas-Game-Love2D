@@ -15,6 +15,7 @@ function EndPoint:new(x, y, world)
         o.physics.shape)
     o.physics.fixture:setCategory(4)
     o.physics.fixture:setMask(2) -- Player
+    o.physics.fixture:setMask(8) -- Sea
     o.physics.fixture:setUserData("Endpoint")
     o.physics.fixture:setSensor(true)
 

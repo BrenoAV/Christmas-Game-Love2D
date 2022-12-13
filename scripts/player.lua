@@ -20,6 +20,8 @@ function Player:new(x, y, width, height, world)
     o.dir = 1
     o.limRight = WIDTH
 
+    o.dx = 0
+
     -- Audio
     o.audio = Audio:new()
     o.audio:loadJump("audios/jump.wav")
@@ -31,6 +33,7 @@ function Player:new(x, y, width, height, world)
     o.isGrounded = true
     o.allowJump = true
     o.isChimney = false
+    o.isHorizontalPlatform = false
 
     -- Lifes
     o.lifes = 5
@@ -155,6 +158,16 @@ function Player:move(dt)
             self.isRunning = true
             self.dir = 1
         end
+
+        ----
+        -- Horizontal Platforms dx
+        --
+        if self.isHorizontalPlatform and not self.isRunning then
+            self.physics.body:setX(self.physics.body:getX() + self.dx)
+        else
+            self.dx = 0
+        end
+
     end
 end
 

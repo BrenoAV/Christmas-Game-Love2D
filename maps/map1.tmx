@@ -155,6 +155,10 @@
  </objectgroup>
  <objectgroup id="11" name="MalicatSpawn">
   <object id="73" x="1496.33" y="974.333">
+   <properties>
+    <property name="speed" type="int" value="150"/>
+    <property name="throwSaw" type="bool" value="false"/>
+   </properties>
    <point/>
   </object>
  </objectgroup>
@@ -168,7 +172,6 @@
  <objectgroup id="16" name="Walls">
   <object id="90" x="3200.67" y="905.667" width="126" height="118.667"/>
  </objectgroup>
- <objectgroup id="19" name="Endpoints"/>
  <objectgroup id="21" name="Gifts">
   <object id="105" x="1956" y="1050">
    <point/>

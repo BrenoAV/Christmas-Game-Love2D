@@ -5,6 +5,8 @@ require('scripts.interface')
 require("scripts.audio")
 Camera = require('libraries.hump.camera')
 
+TEMP = 1
+
 -- Local Variables
 local world = nil
 local cam = nil
@@ -124,6 +126,19 @@ function beginContact(a, b, coll)
             end
         end
     end
+    if (a:getUserData() == "HorizontalPlatform" and b:getUserData() == "Player") then
+        map.player.isHorizontalPlatform = true
+    end
+    ------------
+    -- Fallen Platform
+    ------------
+    if (a:getUserData() == "FallenPlatform" and b:getUserData() == "Player") then
+        for _,fp in pairs(map.fallenPlatforms) do
+            if fp.physics.fixture == a then
+                fp.isPlayerAbove = true
+            end
+        end
+    end
 
     ---------------------------------------------------------------------------
     -- Lose Lifes
@@ -196,9 +211,28 @@ function endContact(a, b, coll)
         map.player.isJumping = true
         map.player.isGrounded = false
     end
+    if (a:getUserData() == "HorizontalPlatform" and b:getUserData() == "Player") then
+        map.player.isHorizontalPlatform = false
+    end
+    ------------
+    -- Fallen Platform
+    ------------
+    if (a:getUserData() == "FallenPlatform" and b:getUserData() == "Player") then
+        for _,fp in pairs(map.fallenPlatforms) do
+            if fp.physics.fixture == a then
+                fp.isPlayerAbove = false
+            end
+        end
+    end
 end
 
 function preSolve(a, b, coll)
+    if a:getUserData() > b:getUserData() then a, b = b, a end
+    if (a:getUserData() == "HorizontalPlatform" and b:getUserData() == "Player") then
+        for _,hp in pairs(map.horizontalPlatforms) do
+            map.player.dx = hp.dx -- Increase the movement in the player
+        end
+    end
 
 end
 
@@ -212,7 +246,7 @@ function love.keypressed(key)
         map.player:jump()
     elseif gameController:getGameState() == 1 and key == "return" then
         -- Start the game from the menu
-        map:loadMap(1) -- First map
+        map:loadMap(TEMP) -- First map
         gameController:setGameState(2) -- start game
     elseif key == "escape" then
         love.event.quit()

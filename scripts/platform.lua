@@ -36,11 +36,11 @@ function Platform:new(x, y, width, height, world)
 
     -- Physics
     o.physics = {}
-    o.physics.body = love.physics.newBody(world, x, y, "static")
+    o.physics.body = love.physics.newBody(world, x, y, "kinematic")
     o.physics.shape = love.physics.newRectangleShape(width, height)
     o.physics.fixture = love.physics.newFixture(o.physics.body,
         o.physics.shape)
-    o.physics.fixture:setUserData("Wall")
+    o.physics.fixture:setUserData("Platform")
     o.physics.fixture:setCategory(3)
     o.physics.fixture:setFriction(1)
     o.physics.fixture:setMask(4) -- endpoints
