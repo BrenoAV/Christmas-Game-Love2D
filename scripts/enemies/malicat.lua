@@ -1,8 +1,6 @@
-local timer = require("scripts.timer")
-
-require('scripts.enemy')
+require('scripts.enemies.enemy')
+require('scripts.enemies.saw_blade')
 local anim8 = require("libraries.anim8.anim8")
-require('scripts.saw_blade')
 
 MaliCat = {}
 

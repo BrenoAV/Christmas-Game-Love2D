@@ -1,4 +1,4 @@
-require('scripts.platform')
+require('scripts.platforms.platform')
 HorizontalPlatform = {}
 
 function HorizontalPlatform:new(x, y, width, height, speed, distLimit, world)

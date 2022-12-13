@@ -36,7 +36,7 @@ function Player:new(x, y, width, height, world)
     o.isHorizontalPlatform = false
 
     -- Lifes
-    o.lifes = 5
+    o.lifes = 1
     o.timer = Timer:new()
     o.timer:addTimer(1, 0, 0.8) -- Damage
     o.timer:addTimer(2, 0, 1)  -- Chimney Animation

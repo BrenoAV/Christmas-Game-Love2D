@@ -1,4 +1,4 @@
-require('scripts.endpoint')
+require('scripts.platforms.endpoint')
 
 Platform = {}
 

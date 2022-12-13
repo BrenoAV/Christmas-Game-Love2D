@@ -5,7 +5,7 @@ require('scripts.interface')
 require("scripts.audio")
 Camera = require('libraries.hump.camera')
 
-TEMP = 1
+TEMP = 3
 
 -- Local Variables
 local world = nil

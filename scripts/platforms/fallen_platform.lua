@@ -1,4 +1,4 @@
-require('scripts.platform')
+require('scripts.platforms.platform')
 require('scripts.timer')
 FallenPlatform = {}
 
@@ -11,10 +11,11 @@ function FallenPlatform:new(x, y, width, height, timeToFallen, world)
     o.isPlayerAbove = false
     o.isPlatformActivate = false
     o.allowMovement = false
+    o.dir = 1 -- for the animation shake
 
     -- Timer
     o.timer = Timer:new()
-    o.timer:addTimer(1, 0, 2) -- Timer for activate the platform
+    o.timer:addTimer(1, 0, o.timeToFallen) -- Timer for activate the platform
     o.timer:addTimer(2, 0, 3) -- Timer for restore the platform
 
     o.physics.fixture:setUserData("FallenPlatform")
@@ -64,12 +65,23 @@ end
 
 function FallenPlatform:move(dt)
     local _, fpy = self:getPosition()
+
     if self.allowMovement and fpy < 2000 then
         local dy = 400*dt
         self.physics.body:setY(fpy + dy)
         self.endPointLeft.physics.body:setY(self.endPointLeft.physics.body:getY() + dy)
         self.endPointRight.physics.body:setY(self.endPointLeft.physics.body:getY() + dy)
         self.jumperArea.physics.body:setY(self.jumperArea.physics.body:getY() + dy)
+    else
+        -- Animation to shake the platform before to fallen
+        if self.timer:getTimer(1).actualValue >= 0.1 and self.timer:getTimer(1).actualValue <= self.timeToFallen - 0.2 then
+            local dy = self.dir*150*dt
+            self.physics.body:setY(fpy + dy)
+            self.endPointLeft.physics.body:setY(self.endPointLeft.physics.body:getY() + dy)
+            self.endPointRight.physics.body:setY(self.endPointLeft.physics.body:getY() + dy)
+            self.jumperArea.physics.body:setY(self.jumperArea.physics.body:getY() + dy)
+            self.dir = self.dir * -1
+        end
     end
 end
 

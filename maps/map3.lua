@@ -10,7 +10,7 @@ return {
   tilewidth = 64,
   tileheight = 64,
   nextlayerid = 14,
-  nextobjectid = 33,
+  nextobjectid = 38,
   properties = {},
   tilesets = {
     {
@@ -388,12 +388,12 @@ return {
       properties = {},
       objects = {
         {
-          id = 32,
+          id = 37,
           name = "",
           class = "",
           shape = "point",
-          x = 69,
-          y = 685,
+          x = 63,
+          y = 705,
           width = 0,
           height = 0,
           rotation = 0,
@@ -421,14 +421,14 @@ return {
           name = "",
           class = "",
           shape = "rectangle",
-          x = 513,
+          x = 448,
           y = 898,
           width = 190,
           height = 27,
           rotation = 0,
           visible = true,
           properties = {
-            ["distLimit"] = 510,
+            ["distLimit"] = 650,
             ["speed"] = 200
           }
         }
@@ -453,44 +453,44 @@ return {
           name = "",
           class = "",
           shape = "rectangle",
-          x = 1540,
-          y = 744,
-          width = 117,
+          x = 1538,
+          y = 770,
+          width = 125,
           height = 23,
           rotation = 0,
           visible = true,
           properties = {
-            ["timeToFallen"] = 2
+            ["timeToFallen"] = 1.5
           }
         },
         {
-          id = 27,
+          id = 35,
           name = "",
           class = "",
           shape = "rectangle",
-          x = 1729.5,
-          y = 554.5,
-          width = 117,
+          x = 1705.5,
+          y = 606.5,
+          width = 126,
           height = 23,
           rotation = 0,
           visible = true,
           properties = {
-            ["timeToFallen"] = 2
+            ["timeToFallen"] = 1.5
           }
         },
         {
-          id = 28,
+          id = 36,
           name = "",
           class = "",
           shape = "rectangle",
-          x = 1919.5,
-          y = 384.5,
-          width = 117,
+          x = 1858,
+          y = 449.5,
+          width = 126,
           height = 23,
           rotation = 0,
           visible = true,
           properties = {
-            ["timeToFallen"] = 2
+            ["timeToFallen"] = 1.5
           }
         }
       }
@@ -508,21 +508,7 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 16,
-          name = "",
-          class = "",
-          shape = "point",
-          x = 1020,
-          y = 915,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",

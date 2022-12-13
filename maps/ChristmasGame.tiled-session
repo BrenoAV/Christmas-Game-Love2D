@@ -14,17 +14,17 @@
         },
         "map1.tmx": {
             "expandedObjectLayers": [
-                18,
+                8,
+                9,
+                11,
                 15,
                 16,
-                11,
-                9,
-                8
+                18
             ],
             "scale": 0.75,
-            "selectedLayer": 6,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 2870,
+                "x": 630,
                 "y": 921.3333333333333
             }
         },
@@ -42,23 +42,24 @@
             "scaleInEditor": 1
         },
         "map1.tmx#tileset-winter": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "map2.tmx": {
             "expandedObjectLayers": [
-                21,
+                8,
+                9,
+                11,
+                13,
                 15,
                 16,
-                13,
-                11,
-                9,
-                8
+                21
             ],
             "scale": 1,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 3086.5,
-                "y": 345
+                "x": 1920,
+                "y": 640
             }
         },
         "map2.tmx#Objects Winter": {
@@ -79,18 +80,18 @@
                 6
             ],
             "expandedObjectLayers": [
-                5,
-                4,
-                3,
-                10,
+                8,
                 9,
-                8
+                10,
+                3,
+                4,
+                5
             ],
             "scale": 1,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 501.5,
-                "y": 759
+                "x": 314.5,
+                "y": 757
             }
         },
         "map3.tmx#Objects": {
