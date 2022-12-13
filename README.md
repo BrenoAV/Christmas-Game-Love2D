@@ -4,7 +4,7 @@ This repository is designated to store a Christmas Game (Platform Game) using [L
 
 # DOWNLOAD
 
-**Download link (demo):** https://github.com/BrenoAV/Christmas-Game-Love2D/releases/download/Demo/ChristmasGameDemo.zip
+**Download link (demo):** https://github.com/BrenoAV/Christmas-Game-Love2D/releases/download/Demo/ChristmasGameDemo-v0.1.zip
 
 # GRAPHICS
 
