@@ -5,8 +5,6 @@ require('scripts.interface')
 require("scripts.audio")
 Camera = require('libraries.hump.camera')
 
-TEMP = 3
-
 -- Local Variables
 local world = nil
 local cam = nil
@@ -254,7 +252,7 @@ function love.keypressed(key)
         map.player:jump()
     elseif gameController:getGameState() == 1 and key == "return" then
         -- Start the game from the menu
-        map:loadMap(TEMP, true) -- First map
+        map:loadMap(1, true) -- First map
         gameController:setGameState(2) -- start game
     elseif key == "escape" then
         love.event.quit()
@@ -263,19 +261,19 @@ end
 
 function debug()
     -- Debug
-    if love.keyboard.isDown("c") then
-        for _, body in pairs(world:getBodies()) do
-          for _, fixture in pairs(body:getFixtures()) do
-              local shape = fixture:getShape()
-              if shape:typeOf("CircleShape") then
-                  local cx, cy = body:getWorldPoints(shape:getPoint())
-                  love.graphics.circle("fill", cx, cy, shape:getRadius())
-              elseif shape:typeOf("PolygonShape") then
-                  love.graphics.polygon("fill", body:getWorldPoints(shape:getPoints()))
-              else
-                  love.graphics.line(body:getWorldPoints(shape:getPoints()))
-              end
-          end
-        end
-    end
+    --if love.keyboard.isDown("c") then
+    --  for _, body in pairs(world:getBodies()) do
+    --    for _, fixture in pairs(body:getFixtures()) do
+    --        local shape = fixture:getShape()
+    --        if shape:typeOf("CircleShape") then
+    --            local cx, cy = body:getWorldPoints(shape:getPoint())
+    --            love.graphics.circle("fill", cx, cy, shape:getRadius())
+    --        elseif shape:typeOf("PolygonShape") then
+    --            love.graphics.polygon("fill", body:getWorldPoints(shape:getPoints()))
+    --        else
+    --            love.graphics.line(body:getWorldPoints(shape:getPoints()))
+    --        end
+    --    end
+    --  end
+    --end
 end

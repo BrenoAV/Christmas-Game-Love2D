@@ -35,5 +35,5 @@ function Interface:drawUI(lifes, gifts)
     love.graphics.draw(self.spritePanettone, 10, 12, nil, 0.30, nil)
     love.graphics.draw(self.spriteBoxes, WIDTH - 65, 12, nil, 0.50, nil)
     love.graphics.print(lifes, 55, 15)
-    love.graphics.print(gifts, WIDTH - 90, 15)
+    love.graphics.print(gifts, WIDTH - 100, 15)
 end
