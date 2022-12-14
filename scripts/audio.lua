@@ -7,21 +7,21 @@ function Audio:new()
 
     o.sounds = {}
     o.sounds.music = nil
-    o.sounds.jump = nil
+    o.sounds.songStatic = nil
 
     return o
 end
 
 function Audio:loadMusic(musicAudio)
-    self.sounds.music = love.audio.newSource(musicAudio, "static")
+    self.sounds.music = love.audio.newSource(musicAudio, "stream")
 end
 
-function Audio:loadJump(jumpAudio)
-    self.sounds.jump = love.audio.newSource(jumpAudio, "static")
+function Audio:loadSongStatic(jumpAudio)
+    self.sounds.songStatic = love.audio.newSource(jumpAudio, "static")
 end
 
-function Audio:playJump()
-    self.sounds.jump:play()
+function Audio:playSongStatic()
+    self.sounds.songStatic:play()
 end
 
 function Audio:playMusic()

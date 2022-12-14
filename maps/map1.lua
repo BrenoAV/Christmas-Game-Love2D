@@ -10,7 +10,7 @@ return {
   tilewidth = 64,
   tileheight = 64,
   nextlayerid = 23,
-  nextobjectid = 117,
+  nextobjectid = 118,
   properties = {},
   tilesets = {
     {
@@ -282,8 +282,8 @@ return {
           name = "",
           class = "",
           shape = "text",
-          x = 351.615,
-          y = 957.166,
+          x = 273.282,
+          y = 958.499,
           width = 361.437,
           height = 36.3333,
           rotation = 0,
@@ -299,7 +299,7 @@ return {
           name = "",
           class = "",
           shape = "text",
-          x = 618.282,
+          x = 580.949,
           y = 1038.5,
           width = 228.77,
           height = 36.3333,
@@ -317,8 +317,8 @@ return {
           name = "",
           class = "",
           shape = "text",
-          x = 976.281,
-          y = 641.833,
+          x = 965.614,
+          y = 632.5,
           width = 207.437,
           height = 36.3333,
           rotation = 0,
@@ -346,23 +346,6 @@ return {
           pixelsize = 21,
           wrap = true,
           halign = "center",
-          properties = {}
-        },
-        {
-          id = 96,
-          name = "",
-          class = "",
-          shape = "text",
-          x = 2708.95,
-          y = 855.167,
-          width = 495.104,
-          height = 24.333,
-          rotation = 0,
-          visible = true,
-          text = "Enter into the chimney to finish the tutorial",
-          fontfamily = "DejaVu Sans",
-          pixelsize = 21,
-          wrap = true,
           properties = {}
         },
         {
@@ -515,6 +498,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 117,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 3200.33,
+          y = 905.333,
+          width = 127,
+          height = 116,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -640,9 +636,9 @@ return {
           name = "",
           class = "",
           shape = "rectangle",
-          x = 3213.33,
+          x = 3237.33,
           y = 897.333,
-          width = 91.5,
+          width = 48,
           height = 8,
           rotation = 0,
           visible = true,
@@ -663,21 +659,7 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 90,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 3200.67,
-          y = 905.667,
-          width = 126,
-          height = 118.667,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",

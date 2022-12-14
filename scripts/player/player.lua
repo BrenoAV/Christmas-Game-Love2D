@@ -1,6 +1,7 @@
 local anim8 = require("libraries.anim8.anim8")
 require('scripts.timer')
 require('scripts.audio')
+require('scripts.objects.gift')
 
 Player = {}
 
@@ -14,17 +15,19 @@ function Player:new(x, y, width, height, world)
     o.y = y -- Corner Left
     o.width = width
     o.height = height
-    o.speed = 300
-    o.jumpForce = -3000
+    o.speed = 350 -- 300
+    o.jumpForce = -3050
     o.world = world
     o.dir = 1
     o.limRight = WIDTH
+
+    o.giftsCollected = 0
 
     o.dx = 0
 
     -- Audio
     o.audio = Audio:new()
-    o.audio:loadJump("audios/jump.wav")
+    o.audio:loadSongStatic("audios/jump.wav")
 
     -- States
     o.isIdle = true
@@ -36,10 +39,10 @@ function Player:new(x, y, width, height, world)
     o.isHorizontalPlatform = false
 
     -- Lifes
-    o.lifes = 1
+    o.lifes = 5
     o.timer = Timer:new()
     o.timer:addTimer(1, 0, 0.8) -- Damage
-    o.timer:addTimer(2, 0, 1)  -- Chimney Animation
+    o.timer:addTimer(2, 0, 0.5)  -- Chimney Animation
 
     -- Sprites
     o.spriteSheet = love.graphics.newImage("sprites/playerSheet.png")
@@ -103,6 +106,8 @@ function Player:update(dt)
     if self.timer.timers[2].finished then
         if self.frameCountHeight == #self.frameHeight then
             self.isChimney = false
+            self.frameCountHeight = 1
+            self.timer:resetTimer(2)
         else
             self:updateFrameChimney()
             self.timer:resetTimer(2)
@@ -173,7 +178,7 @@ end
 
 function Player:jump()
     if self.isGrounded and not self.isChimney then
-        self.audio:playJump()
+        self.audio:playSongStatic()
         self.isJumping = true
         self.physics.body:applyLinearImpulse(0, self.jumpForce)
     end
@@ -202,7 +207,8 @@ function Player:destroy()
 end
 
 function Player:reset()
-    self:resetLifes()
+    self.lifes = 1
+    self.giftsCollected = 0
 end
 
 -------------------------------------------------------------------------------
@@ -217,14 +223,19 @@ function Player:decreaseLifes(n)
     self.physics.body:applyLinearImpulse(0, 0)
 end
 
-function Player:resetLifes()
-    self.lifes = 1
-end
-
 function Player:getLifes()
     return self.lifes
 end
 
 function Player:updateFrameChimney()
     self.frameCountHeight = self.frameCountHeight + 1
+end
+
+function Player:addGifts(n)
+    n = n or 1
+    self.giftsCollected = self.giftsCollected + n
+end
+
+function Player:getGiftsCollected()
+    return self.giftsCollected
 end

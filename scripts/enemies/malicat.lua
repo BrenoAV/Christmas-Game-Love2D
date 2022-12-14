@@ -4,18 +4,18 @@ local anim8 = require("libraries.anim8.anim8")
 
 MaliCat = {}
 
-function MaliCat:new(x, y, speed, activateSawBlade, world)
+function MaliCat:new(x, y, speed, dir, activateSawBlade, world)
     local width, height = 35, 90
 
     local o = Enemy:new(x, y, width, height, world)
     setmetatable(o, self)
     self.__index = self
 
-    o.speed = speed
-    o.dir = 1
+    o.speed = speed or 150
+    o.dir = dir or 1
 
     -- SawBlade
-    o.activateSawBlade = activateSawBlade
+    o.activateSawBlade = activateSawBlade or false
     o.sawBlade = nil
     o.timer = Timer:new() -- timer to spawn the blade
     o.timer:addTimer(1, 0, 2) -- X seconds

@@ -14,18 +14,18 @@
         },
         "map1.tmx": {
             "expandedObjectLayers": [
-                8,
-                9,
-                11,
                 15,
+                9,
+                8,
+                11,
                 16,
                 18
             ],
-            "scale": 0.75,
+            "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 630,
-                "y": 921.3333333333333
+                "x": 405,
+                "y": 698
             }
         },
         "map1.tmx#Objects": {
@@ -47,19 +47,19 @@
         },
         "map2.tmx": {
             "expandedObjectLayers": [
-                8,
-                9,
-                11,
-                13,
                 15,
+                9,
+                8,
+                11,
+                21,
                 16,
-                21
+                13
             ],
             "scale": 1,
-            "selectedLayer": 11,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1920,
-                "y": 640
+                "x": 3656,
+                "y": 518
             }
         },
         "map2.tmx#Objects Winter": {
@@ -80,18 +80,23 @@
                 6
             ],
             "expandedObjectLayers": [
-                8,
+                12,
+                15,
                 9,
+                8,
                 10,
-                3,
+                5,
                 4,
-                5
+                17,
+                16,
+                3,
+                13
             ],
-            "scale": 1,
-            "selectedLayer": 5,
+            "scale": 0.5,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 314.5,
-                "y": 757
+                "x": 394,
+                "y": 720
             }
         },
         "map3.tmx#Objects": {
@@ -104,7 +109,7 @@
             "scaleInDock": 1
         }
     },
-    "last.exportedFilePath": "/home/stream/Desktop/Christmas-Game-Love2D/maps",
+    "last.exportedFilePath": "/home/brenoav/GitHub/Christmas-Game-Love2D/maps",
     "last.imagePath": "/home/stream/Desktop/Christmas-Game-Love2D/maps/Objects",
     "map.lastUsedExportFilter": "Lua files (*.lua)",
     "map.lastUsedFormat": "tmx",

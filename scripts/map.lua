@@ -127,9 +127,6 @@ function Map:drawBackground()
 end
 
 function Map:loadMap(mapNum, resetPlayer)
-    mapNum = mapNum or 1
-    resetPlayer = resetPlayer or true
-
     self.currentMap = mapNum
 
     self.gameMap = sti("maps/" .. self.maps[mapNum]["name"] .. ".lua")
@@ -155,7 +152,7 @@ function Map:loadMap(mapNum, resetPlayer)
     if self.gameMap.layers["MalicatSpawn"] then
         for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
             table.insert(self.maliCats, MaliCat:new(obj.x, obj.y,
-                obj.properties.speed, obj.properties.throwSaw, self.world))
+                obj.properties.speed, obj.properties.dir, obj.properties.throwSaw, self.world))
         end
     end
 
@@ -224,8 +221,6 @@ function Map:loadMap(mapNum, resetPlayer)
 end
 
 function Map:destroy(gameOver)
-    gameOver = gameOver or true
-
     if gameOver then
         self.player:destroy()
     end
@@ -307,17 +302,13 @@ function Map:destroy(gameOver)
         i = i - 1
     end
 
+    -- chimneyFlag
+     if self.chimneyFlag ~= nil then
+         self.chimneyFlag:destroy()
+     end
+
 end
 
 function Map:allMaps()
     return self.maps
-end
-
-function Map:addGifts(n)
-    n = n or 1
-    self.giftsCollected = self.giftsCollected + n
-end
-
-function Map:getGiftsCollected()
-    return self.giftsCollected
 end

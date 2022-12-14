@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="23" nextobjectid="117">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="60" height="20" tilewidth="64" tileheight="64" infinite="0" nextlayerid="23" nextobjectid="118">
  <editorsettings>
   <export target="map1.lua" format="lua"/>
  </editorsettings>
@@ -118,20 +118,17 @@
 </data>
  </layer>
  <objectgroup id="18" name="Texts">
-  <object id="67" x="351.615" y="957.166" width="361.437" height="36.3333">
+  <object id="67" x="273.282" y="958.499" width="361.437" height="36.3333">
    <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1">Press &lt;Left&gt; or &lt;Right&gt; to move</text>
   </object>
-  <object id="68" x="618.282" y="1038.5" width="228.77" height="36.3333">
+  <object id="68" x="580.949" y="1038.5" width="228.77" height="36.3333">
    <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1" halign="center">Jump pressing &lt;UP&gt;</text>
   </object>
-  <object id="76" x="976.281" y="641.833" width="207.437" height="36.3333">
+  <object id="76" x="965.614" y="632.5" width="207.437" height="36.3333">
    <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1" halign="center">Avoid the Malicat</text>
   </object>
   <object id="84" x="1978.95" y="963.167" width="391.437" height="36.3333">
    <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1" halign="center">Collect gifts and become a master</text>
-  </object>
-  <object id="96" x="2708.95" y="855.167" width="495.104" height="24.333">
-   <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1">Enter into the chimney to finish the tutorial</text>
   </object>
   <object id="109" x="1676.28" y="885.833" width="233.437" height="36.3333">
    <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1" halign="center">You don't enjoy water</text>
@@ -147,6 +144,7 @@
   <object id="82" x="2109.33" y="1085.33" width="190.667" height="46.6667"/>
   <object id="83" x="2364" y="1086.67" width="194.667" height="46.6667"/>
   <object id="94" x="2625.33" y="1088.67" width="190.667" height="46"/>
+  <object id="117" x="3200.33" y="905.333" width="127" height="116"/>
  </objectgroup>
  <objectgroup id="8" name="PlayerSpawn">
   <object id="116" x="221.333" y="1061.5">
@@ -167,11 +165,9 @@
   <object id="88" x="3326.67" y="1200.67" width="513.333" height="76"/>
  </objectgroup>
  <objectgroup id="15" name="ChimneyFinish">
-  <object id="89" x="3213.33" y="897.333" width="91.5" height="8"/>
+  <object id="89" x="3237.33" y="897.333" width="48" height="8"/>
  </objectgroup>
- <objectgroup id="16" name="Walls">
-  <object id="90" x="3200.67" y="905.667" width="126" height="118.667"/>
- </objectgroup>
+ <objectgroup id="16" name="Walls"/>
  <objectgroup id="21" name="Gifts">
   <object id="105" x="1956" y="1050">
    <point/>

@@ -10,7 +10,7 @@ return {
   tilewidth = 64,
   tileheight = 64,
   nextlayerid = 24,
-  nextobjectid = 151,
+  nextobjectid = 153,
   properties = {},
   tilesets = {
     {
@@ -460,6 +460,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 151,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 3584.5,
+          y = 653,
+          width = 127,
+          height = 116,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -550,7 +563,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["speed"] = 150,
+            ["speed"] = 200,
             ["throwSaw"] = false
           }
         }
@@ -639,13 +652,13 @@ return {
       properties = {},
       objects = {
         {
-          id = 137,
+          id = 152,
           name = "",
           class = "",
           shape = "rectangle",
-          x = 3595.99,
-          y = 637.166,
-          width = 91.5,
+          x = 3621.5,
+          y = 645,
+          width = 48,
           height = 8,
           rotation = 0,
           visible = true,
@@ -666,21 +679,7 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 138,
-          name = "",
-          class = "",
-          shape = "rectangle",
-          x = 3583.33,
-          y = 645.5,
-          width = 126,
-          height = 118.667,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",

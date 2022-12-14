@@ -22,3 +22,7 @@ function ChimneyFlag:new(x, y, width, height, world)
 
     return o
 end
+
+function ChimneyFlag:destroy()
+    self.physics.fixture:destroy()
+end

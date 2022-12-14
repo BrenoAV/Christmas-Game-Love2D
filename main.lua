@@ -56,11 +56,12 @@ function love.update(dt)
         map:update(dt)
 
         if gameController.jumpMap and not map.player.isChimney then
-            map:destroy(false) -- Not gamer over
             local nextMap = map.currentMap + 1
             if nextMap < #map.maps + 1 then
+                map:destroy(false) -- Not gamer over
                 map:loadMap(nextMap, false)
             else
+                map:destroy(true) -- Not gamer over
                 map:loadMap(1, true)
             end
             gameController.jumpMap = false
@@ -109,7 +110,7 @@ function love.draw()
             debug()
         cam:detach()
 
-        interface:drawUI(map.player:getLifes(), map:getGiftsCollected())
+        interface:drawUI(map.player:getLifes(), map.player:getGiftsCollected())
     end
 end
 
@@ -122,6 +123,13 @@ function beginContact(a, b, coll)
     if (a:getUserData() == "Endpoint" and b:getUserData() == "Enemy") then
         for _,e in pairs(map.maliCats) do
             if e.physics.fixture == b then
+                e:turnAround()
+            end
+        end
+    end
+    if (a:getUserData() == "Enemy" and b:getUserData() == "Enemy") then
+        for _,e in pairs(map.maliCats) do
+            if e.physics.fixture == a or e.physics.fixture == b then
                 e:turnAround()
             end
         end
@@ -168,7 +176,7 @@ function beginContact(a, b, coll)
     -- collision between sea and player
     if (a:getUserData() == "Player" and b:getUserData() == "Sea") then
         gameController:setGameState(1)
-        map:destroy()
+        map:destroy(true)
     end
 
     ---------------------------------------------------------------------------
@@ -176,10 +184,10 @@ function beginContact(a, b, coll)
     ---------------------------------------------------------------------------
 
     if (a:getUserData() == "Gift" and b:getUserData() == "Player") then
-
         for i,g in pairs(map.gifts) do
             if a == g.physics.fixture then
-                map:addGifts()
+                g.audio:playSongStatic()
+                map.player:addGifts()
                 table.remove(map.gifts, i)
                 g:destroy() -- Remove collider
             end
@@ -246,7 +254,7 @@ function love.keypressed(key)
         map.player:jump()
     elseif gameController:getGameState() == 1 and key == "return" then
         -- Start the game from the menu
-        map:loadMap(TEMP) -- First map
+        map:loadMap(TEMP, true) -- First map
         gameController:setGameState(2) -- start game
     elseif key == "escape" then
         love.event.quit()

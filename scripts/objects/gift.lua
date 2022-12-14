@@ -1,3 +1,5 @@
+require('scripts.audio')
+
 Gift = {}
 
 function Gift:new(x, y, world)
@@ -8,6 +10,10 @@ function Gift:new(x, y, world)
     o.x = x
     o.y = y
     o.world = world
+
+    -- Audio
+    o.audio = Audio:new()
+    o.audio:loadSongStatic("audios/coin.wav")
 
     -- Sprite
     o.sprite = love.graphics.newImage("sprites/Crate.png")
