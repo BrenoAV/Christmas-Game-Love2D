@@ -11,7 +11,7 @@ This repository is designated to store a Christmas Game (Platform Game) using [L
 # Graphics
 
 - [GameArt2D](https://www.gameart2d.com/freebies.html)
-- twitch.tv/mrchuaschinai
+- Chimney - mrchuaschinai
 
 # Fonts
 
