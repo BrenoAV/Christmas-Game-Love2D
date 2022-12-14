@@ -4,20 +4,20 @@ This repository is designated to store a Christmas Game (Platform Game) using [L
 
 ![Image from the game](imgs/img1.png)
 
-# DOWNLOAD
+# Download
 
-**Download link (demo):** https://github.com/BrenoAV/Christmas-Game-Love2D/releases/download/Demo/ChristmasGameDemo-v0.1.zip
+**Download link (demo):** https://github.com/BrenoAV/Christmas-Game-Love2D/releases/download/Demo-v0.2/ChristmasGameDemo-v0.2.zip
 
-# GRAPHICS
+# Graphics
 
 - [GameArt2D](https://www.gameart2d.com/freebies.html)
 - twitch.tv/mrchuaschinai
 
-# FONTS
+# Fonts
 
 - MatrixSans by [Brad Neil](https://fontesk.com/designer/brad-neil/)
 
-# AUDIOS
+# Audios
 
 - https://opengameart.org/content/winter-feeling
 - Jump sound: dklon
