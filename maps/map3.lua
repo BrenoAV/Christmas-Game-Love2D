@@ -409,25 +409,7 @@ return {
       parallaxx = 1,
       parallaxy = 1,
       properties = {},
-      objects = {
-        {
-          id = 60,
-          name = "",
-          class = "",
-          shape = "text",
-          x = 4064.45,
-          y = 473.833,
-          width = 495.104,
-          height = 24.333,
-          rotation = 0,
-          visible = true,
-          text = "Enter into the chimney to finish the demo",
-          fontfamily = "DejaVu Sans",
-          pixelsize = 21,
-          wrap = true,
-          properties = {}
-        }
-      }
+      objects = {}
     },
     {
       type = "objectgroup",

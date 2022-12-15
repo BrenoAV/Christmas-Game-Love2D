@@ -9,8 +9,8 @@ return {
   height = 40,
   tilewidth = 64,
   tileheight = 64,
-  nextlayerid = 11,
-  nextobjectid = 38,
+  nextlayerid = 14,
+  nextobjectid = 42,
   properties = {},
   tilesets = {
     {
@@ -41,6 +41,105 @@ return {
       wangsets = {},
       tilecount = 20,
       tiles = {}
+    },
+    {
+      name = "objects",
+      firstgid = 21,
+      class = "",
+      tilewidth = 511,
+      tileheight = 280,
+      spacing = 0,
+      margin = 0,
+      columns = 0,
+      objectalignment = "unspecified",
+      tilerendersize = "tile",
+      fillmode = "stretch",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 1,
+        height = 1
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 12,
+      tiles = {
+        {
+          id = 0,
+          image = "Objects/Tree_2.png",
+          width = 228,
+          height = 280
+        },
+        {
+          id = 1,
+          image = "Objects/Tree_1.png",
+          width = 364,
+          height = 280
+        },
+        {
+          id = 2,
+          image = "Objects/Stone.png",
+          width = 124,
+          height = 78
+        },
+        {
+          id = 3,
+          image = "Objects/SnowMan.png",
+          width = 193,
+          height = 210
+        },
+        {
+          id = 4,
+          image = "Objects/Sign_2.png",
+          width = 87,
+          height = 93
+        },
+        {
+          id = 5,
+          image = "Objects/Sign_1.png",
+          width = 87,
+          height = 94
+        },
+        {
+          id = 6,
+          image = "Objects/Igloo.png",
+          width = 511,
+          height = 201
+        },
+        {
+          id = 7,
+          image = "Objects/IceBox.png",
+          width = 101,
+          height = 101
+        },
+        {
+          id = 8,
+          image = "Objects/flag.png",
+          width = 64,
+          height = 64
+        },
+        {
+          id = 9,
+          image = "Objects/Crystal.png",
+          width = 97,
+          height = 78
+        },
+        {
+          id = 10,
+          image = "Objects/Crate.png",
+          width = 101,
+          height = 101
+        },
+        {
+          id = 11,
+          image = "Objects/chimney.png",
+          width = 128,
+          height = 130
+        }
+      }
     }
   },
   layers = {
@@ -149,7 +248,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 20, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 32, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 3, 3, 3, 3, 3, 4, 0, 0, 0, 0, 0, 0, 0, 2, 3, 4, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 8, 8, 8, 8, 8, 8, 9, 0, 0, 0, 0, 0, 0, 0, 7, 8, 9, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 8, 8, 8, 8, 8, 8, 9, 0, 0, 0, 0, 0, 0, 1, 7, 8, 9, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -250,6 +349,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 39,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 3392.5,
+          y = 1675,
+          width = 127,
+          height = 116,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -336,14 +448,43 @@ return {
       properties = {},
       objects = {
         {
-          id = 19,
+          id = 38,
           name = "",
           class = "",
           shape = "point",
-          x = 2164.42,
-          y = 1915.09,
+          x = 74,
+          y = 2162,
           width = 0,
           height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 11,
+      name = "ChimneyFinish",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 40,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 3426.5,
+          y = 1665,
+          width = 48,
+          height = 8,
           rotation = 0,
           visible = true,
           properties = {}
@@ -708,6 +849,39 @@ return {
           properties = {
             ["speed"] = 300
           }
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      draworder = "topdown",
+      id = 13,
+      name = "Texts",
+      class = "",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      parallaxx = 1,
+      parallaxy = 1,
+      properties = {},
+      objects = {
+        {
+          id = 41,
+          name = "",
+          class = "",
+          shape = "text",
+          x = 3182.75,
+          y = 1618.14,
+          width = 495.104,
+          height = 24.333,
+          rotation = 0,
+          visible = true,
+          text = "Enter into the chimney to finish the demo",
+          fontfamily = "DejaVu Sans",
+          pixelsize = 21,
+          wrap = true,
+          properties = {}
         }
       }
     }

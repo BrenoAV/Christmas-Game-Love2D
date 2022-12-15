@@ -1,10 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="120" height="40" tilewidth="64" tileheight="64" infinite="0" nextlayerid="11" nextobjectid="38">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="120" height="40" tilewidth="64" tileheight="64" infinite="0" nextlayerid="14" nextobjectid="42">
  <editorsettings>
   <export target="map4.lua" format="lua"/>
  </editorsettings>
  <tileset firstgid="1" name="tileset-winter" tilewidth="64" tileheight="64" tilecount="20" columns="5">
   <image source="Tilesets/tileset-winter.png" width="320" height="256"/>
+ </tileset>
+ <tileset firstgid="21" name="objects" tilewidth="511" tileheight="280" tilecount="12" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="228" height="280" source="Objects/Tree_2.png"/>
+  </tile>
+  <tile id="1">
+   <image width="364" height="280" source="Objects/Tree_1.png"/>
+  </tile>
+  <tile id="2">
+   <image width="124" height="78" source="Objects/Stone.png"/>
+  </tile>
+  <tile id="3">
+   <image width="193" height="210" source="Objects/SnowMan.png"/>
+  </tile>
+  <tile id="4">
+   <image width="87" height="93" source="Objects/Sign_2.png"/>
+  </tile>
+  <tile id="5">
+   <image width="87" height="94" source="Objects/Sign_1.png"/>
+  </tile>
+  <tile id="6">
+   <image width="511" height="201" source="Objects/Igloo.png"/>
+  </tile>
+  <tile id="7">
+   <image width="101" height="101" source="Objects/IceBox.png"/>
+  </tile>
+  <tile id="8">
+   <image width="64" height="64" source="Objects/flag.png"/>
+  </tile>
+  <tile id="9">
+   <image width="97" height="78" source="Objects/Crystal.png"/>
+  </tile>
+  <tile id="10">
+   <image width="101" height="101" source="Objects/Crate.png"/>
+  </tile>
+  <tile id="11">
+   <image width="128" height="130" source="Objects/chimney.png"/>
+  </tile>
  </tileset>
  <layer id="2" name="Tile Layer 1" width="120" height="40">
   <data encoding="csv">
@@ -79,7 +118,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,13,13,13,13,13,13,13,13,13,13,20,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,32,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,3,3,3,3,3,3,4,0,0,0,0,0,0,0,2,3,4,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,8,8,8,8,9,0,0,0,0,0,0,0,7,8,9,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,8,8,8,8,9,0,0,0,0,0,0,1,7,8,9,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -140,6 +179,7 @@
  </layer>
  <objectgroup id="10" name="Walls">
   <object id="28" x="2369.58" y="963.394" width="757.212" height="634.909"/>
+  <object id="39" x="3392.5" y="1675" width="127" height="116"/>
  </objectgroup>
  <objectgroup id="8" name="Gifts">
   <object id="24" x="1565.33" y="2110.67">
@@ -156,9 +196,12 @@
   </object>
  </objectgroup>
  <objectgroup id="3" name="PlayerSpawn">
-  <object id="19" x="2164.42" y="1915.09">
+  <object id="38" x="74" y="2162">
    <point/>
   </object>
+ </objectgroup>
+ <objectgroup id="11" name="ChimneyFinish">
+  <object id="40" x="3426.5" y="1665" width="48" height="8"/>
  </objectgroup>
  <objectgroup id="4" name="Platforms">
   <object id="2" x="-3.0303" y="2240.3" width="515.576" height="317.273"/>
@@ -216,6 +259,11 @@
     <property name="speed" type="int" value="300"/>
    </properties>
    <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="13" name="Texts">
+  <object id="41" x="3182.75" y="1618.14" width="495.104" height="24.333">
+   <text fontfamily="DejaVu Sans" pixelsize="21" wrap="1">Enter into the chimney to finish the demo</text>
   </object>
  </objectgroup>
 </map>
