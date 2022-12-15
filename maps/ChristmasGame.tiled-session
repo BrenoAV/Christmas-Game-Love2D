@@ -1,0 +1,97 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "map1.tmx": {
+            "expandedObjectLayers": [
+                8
+            ],
+            "scale": 0.5,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 1560,
+                "y": 880
+            }
+        },
+        "map1.tmx#Objects": {
+            "scaleInDock": 1
+        },
+        "map1.tmx#tileset-winter": {
+            "scaleInDock": 1
+        },
+        "map2.tmx": {
+            "scale": 0.16526041666666666,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1924.2357390482196,
+                "y": 641.4119130160732
+            }
+        },
+        "map2.tmx#Objects Winter": {
+            "scaleInDock": 1
+        },
+        "map2.tmx#tileset-winter": {
+            "scaleInDock": 1
+        },
+        "map3.tmx": {
+            "expandedObjectLayers": [
+                4,
+                10
+            ],
+            "scale": 0.75,
+            "selectedLayer": 8,
+            "viewCenter": {
+                "x": 4639.333333333333,
+                "y": 568
+            }
+        },
+        "map3.tmx#Objects": {
+            "scaleInDock": 1
+        },
+        "map3.tmx#tileset-winter": {
+            "scaleInDock": 1
+        },
+        "map4.tmx": {
+            "expandedObjectLayers": [
+                6,
+                5,
+                4,
+                3,
+                7
+            ],
+            "scale": 0.5,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 2274,
+                "y": 2304
+            }
+        },
+        "map4.tmx#tileset-winter": {
+            "scaleInDock": 0.75
+        }
+    },
+    "last.exportedFilePath": "C:/Users/brenus11/Desktop/Christmas-Game-Love2D/maps",
+    "last.imagePath": "C:/Users/brenus11/Desktop/Christmas-Game-Love2D/maps/Tilesets",
+    "map.height": 40,
+    "map.lastUsedExportFilter": "Lua files (*.lua)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 120,
+    "openFiles": [
+    ],
+    "project": "ChristmasGame.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    }
+}

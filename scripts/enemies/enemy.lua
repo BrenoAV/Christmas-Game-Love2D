@@ -19,7 +19,7 @@ function Enemy:new(x, y, width, height, world)
     o.physics.body:setFixedRotation(true)
     o.physics.shape = love.physics.newRectangleShape(width, height)
     o.physics.fixture = love.physics.newFixture(o.physics.body,
-        o.physics.shape, 1)
+        o.physics.shape, 10)
     o.physics.fixture:setUserData("Enemy")
     o.physics.fixture:setCategory(5)
     o.physics.fixture:setMask(6) -- objects

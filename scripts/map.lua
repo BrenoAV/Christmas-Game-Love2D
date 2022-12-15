@@ -48,7 +48,9 @@ function Map:new(world)
         -- Map2
         {name = "map2"},
         -- Map3
-        {name = "map3"}
+        {name = "map3"},
+        -- Map4
+        {name = "map4"}
     }
     return o
 end
@@ -131,6 +133,7 @@ function Map:loadMap(mapNum, resetPlayer)
 
     self.gameMap = sti("maps/" .. self.maps[mapNum]["name"] .. ".lua")
 
+
     -- Player
     for _, obj in pairs(self.gameMap.layers["PlayerSpawn"].objects) do
         if resetPlayer then
@@ -141,18 +144,19 @@ function Map:loadMap(mapNum, resetPlayer)
         self.player.limRight = self.gameMap.width * self.gameMap.tilewidth
     end
 
-    -- Texts
-    if self.gameMap.layers["Texts"] then
-        for _, obj in pairs(self.gameMap.layers["Texts"].objects) do
-            table.insert(self.texts, Text:new(obj.text, obj.x, obj.y))
-        end
-    end
-
     -- Malicat
     if self.gameMap.layers["MalicatSpawn"] then
         for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
             table.insert(self.maliCats, MaliCat:new(obj.x, obj.y,
-                obj.properties.speed, obj.properties.dir, obj.properties.throwSaw, self.world))
+                    obj.properties.speed, obj.properties.dir, obj.properties.throwSaw,
+                obj.properties.smallCat, self.world))
+        end
+    end
+
+    -- Texts
+    if self.gameMap.layers["Texts"] then
+        for _, obj in pairs(self.gameMap.layers["Texts"].objects) do
+            table.insert(self.texts, Text:new(obj.text, obj.x, obj.y))
         end
     end
 

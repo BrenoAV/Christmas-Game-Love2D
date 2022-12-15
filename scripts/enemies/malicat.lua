@@ -4,8 +4,13 @@ local anim8 = require("libraries.anim8.anim8")
 
 MaliCat = {}
 
-function MaliCat:new(x, y, speed, dir, activateSawBlade, world)
-    local width, height = 35, 90
+function MaliCat:new(x, y, speed, dir, activateSawBlade, smallCat, world)
+    local width, height
+    if smallCat then
+        width, height = 63, 60
+    else
+        width, height = 35, 90
+    end
 
     local o = Enemy:new(x, y, width, height, world)
     setmetatable(o, self)
@@ -13,6 +18,9 @@ function MaliCat:new(x, y, speed, dir, activateSawBlade, world)
 
     o.speed = speed or 150
     o.dir = dir or 1
+
+    -- smallCat
+    o.smallCat = smallCat or false
 
     -- SawBlade
     o.activateSawBlade = activateSawBlade or false
@@ -22,6 +30,8 @@ function MaliCat:new(x, y, speed, dir, activateSawBlade, world)
     o.timer:startTimer(1)
 
 
+
+
     -- Animation
     o.sprite = love.graphics.newImage("sprites/catMalignous.png")
     o.grid = anim8.newGrid(150, 163, o.sprite:getWidth(), o.sprite:getHeight())
@@ -29,6 +39,7 @@ function MaliCat:new(x, y, speed, dir, activateSawBlade, world)
     o.animations.idle = anim8.newAnimation(o.grid('1-10', 1), 0.1)
     o.animations.walk = anim8.newAnimation(o.grid('1-10', 2), 0.1)
     o.animations.run = anim8.newAnimation(o.grid('1-8', 3), 0.1)
+    o.animations.slide = anim8.newAnimation(o.grid('1-10', 4), 0.1)
     o.animations.actual = o.animations.idle
 
     return o
@@ -67,7 +78,11 @@ end
 
 function MaliCat:draw()
     local ex, ey = self:getPosition()
-    self.animations.actual:draw(self.sprite, ex, ey, nil, self.dir*0.70, 0.70, 71, 92)
+    if self.smallCat then
+        self.animations.actual:draw(self.sprite, ex, ey, nil, self.dir*0.70, 0.60, 50, 110)
+    else
+        self.animations.actual:draw(self.sprite, ex, ey, nil, self.dir*0.70, 0.70, 71, 92)
+    end
 
     -- Bullet
     if self.sawBlade ~= nil then
@@ -78,7 +93,11 @@ end
 
 function MaliCat:move(dt)
     local ex, _ = self:getPosition()
-    self.animations.actual = self.animations.run
+    if self.smallCat then
+        self.animations.actual = self.animations.slide
+    else
+        self.animations.actual = self.animations.run
+    end
     self.physics.body:setX(ex + self.dir * self.speed * dt)
 end
 

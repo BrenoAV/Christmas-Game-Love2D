@@ -21,6 +21,7 @@ function Audio:loadSongStatic(jumpAudio)
 end
 
 function Audio:playSongStatic()
+    self.sounds.songStatic:setVolume(0.3)
     self.sounds.songStatic:play()
 end
 

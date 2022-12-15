@@ -66,7 +66,7 @@ end
 function FallenPlatform:move(dt)
     local _, fpy = self:getPosition()
 
-    if self.allowMovement and fpy < 2000 then
+    if self.allowMovement then
         local dy = 400*dt
         self.physics.body:setY(fpy + dy)
         self.endPointLeft.physics.body:setY(self.endPointLeft.physics.body:getY() + dy)

@@ -215,12 +215,13 @@ end
 -- Lifes System
 -------------------------------------------------------------------------------
 
-function Player:decreaseLifes(n)
+function Player:decreaseLifes(n, normX, normY)
     self.lifes = self.lifes - n
     self.takenDamage = true
     self.timer:resetTimer(1)
     self.timer:startTimer(1)
-    self.physics.body:applyLinearImpulse(0, 0)
+    print(normX)
+    self.physics.body:applyLinearImpulse(-normX * 2000, 0)
 end
 
 function Player:getLifes()
