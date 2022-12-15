@@ -125,14 +125,16 @@ function Map:drawLayer()
 end
 
 function Map:drawBackground()
-    love.graphics.draw(self.background)
+    love.graphics.draw(self.background, nil, nil, 0, 1.5, 1.5)
 end
 
 function Map:loadMap(mapNum, resetPlayer)
+
+    self:destroy(resetPlayer)
+
     self.currentMap = mapNum
 
     self.gameMap = sti("maps/" .. self.maps[mapNum]["name"] .. ".lua")
-
 
     -- Player
     for _, obj in pairs(self.gameMap.layers["PlayerSpawn"].objects) do
@@ -144,14 +146,6 @@ function Map:loadMap(mapNum, resetPlayer)
         self.player.limRight = self.gameMap.width * self.gameMap.tilewidth
     end
 
-    -- Malicat
-    if self.gameMap.layers["MalicatSpawn"] then
-        for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
-            table.insert(self.maliCats, MaliCat:new(obj.x, obj.y,
-                    obj.properties.speed, obj.properties.dir, obj.properties.throwSaw,
-                obj.properties.smallCat, self.world))
-        end
-    end
 
     -- Texts
     if self.gameMap.layers["Texts"] then
@@ -192,6 +186,16 @@ function Map:loadMap(mapNum, resetPlayer)
         end
     end
 
+    -- Malicat
+    if self.gameMap.layers["MalicatSpawn"] then
+        for _, obj in pairs(self.gameMap.layers["MalicatSpawn"].objects) do
+            table.insert(self.maliCats, MaliCat:new(obj.x, obj.y,
+                    obj.properties.speed, obj.properties.dir, obj.properties.throwSaw,
+                obj.properties.smallCat, self.world))
+        end
+    end
+
+
     -- Sea
     if self.gameMap.layers["Sea"] then
         for _, obj in pairs(self.gameMap.layers["Sea"].objects) do
@@ -224,8 +228,8 @@ function Map:loadMap(mapNum, resetPlayer)
     end
 end
 
-function Map:destroy(gameOver)
-    if gameOver then
+function Map:destroy(resetPlayer)
+    if resetPlayer and self.player ~= nil then
         self.player:destroy()
     end
 

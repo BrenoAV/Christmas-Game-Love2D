@@ -58,10 +58,8 @@ function love.update(dt)
         if gameController.jumpMap and not map.player.isChimney then
             local nextMap = map.currentMap + 1
             if nextMap < #map.maps + 1 then
-                map:destroy(false) -- Not gamer over
                 map:loadMap(nextMap, false)
             else
-                map:destroy(true) -- Not gamer over
                 map:loadMap(1, true)
             end
             gameController.jumpMap = false
@@ -155,22 +153,15 @@ function beginContact(a, b, coll)
 
         for i,e in pairs(map.maliCats) do
             if e.physics.fixture == a then
-                --table.remove(map.maliCats, i)
-                local normX, normY = coll:getNormal()
-                map.player:decreaseLifes(0, normX, normY)
-                -- Player left to right and Enemy right to left
-                -- Player right to left and enemy left to right
-                if (map.player.dir > 0 and e.dir < 0) or
-                    (map.player.dir < 0 and e.dir > 0) then
-                    e:turnAround()
-                end
+                e:destroy()
+                table.remove(map.maliCats, i)
+                map.player:decreaseLifes(1)
             end
         end
     end
     if (a:getUserData() == "Player" and b:getUserData() == "SawBlade") then
 
-        local normX, normY = coll:getNormal()
-        map.player:decreaseLifes(1, normX, normY)
+        map.player:decreaseLifes(1)
 
         for _,e in pairs(map.maliCats) do
             if b == e.sawBlade.physics.fixture then
@@ -182,7 +173,6 @@ function beginContact(a, b, coll)
     -- collision between sea and player
     if (a:getUserData() == "Player" and b:getUserData() == "Sea") then
         gameController:setGameState(1)
-        map:destroy(true)
     end
 
     ---------------------------------------------------------------------------
@@ -194,8 +184,8 @@ function beginContact(a, b, coll)
             if a == g.physics.fixture then
                 g.audio:playSongStatic()
                 map.player:addGifts()
-                table.remove(map.gifts, i)
                 g:destroy() -- Remove collider
+                table.remove(map.gifts, i)
             end
         end
     end
@@ -215,7 +205,6 @@ function beginContact(a, b, coll)
     ---------------------------------------------------------------------------
     if map.player:getLifes() <= 0 then
         gameController:setGameState(1)
-        map:destroy(true)
     end
 end
 
