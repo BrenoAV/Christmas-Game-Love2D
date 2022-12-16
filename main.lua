@@ -5,6 +5,8 @@ require('scripts.interface')
 require("scripts.audio")
 Camera = require('libraries.hump.camera')
 
+TEMP = 4
+
 -- Local Variables
 local world = nil
 local cam = nil
@@ -143,6 +145,9 @@ function beginContact(a, b, coll)
             end
         end
     end
+    if (a:getUserData() == "Player" and b:getUserData() == "SliderPlatform") then
+        map.player.isSliderPlatform = true
+    end
 
     ---------------------------------------------------------------------------
     -- Lose Lifes
@@ -201,6 +206,7 @@ function beginContact(a, b, coll)
     ---------------------------------------------------------------------------
     -- Gamer Over check
     ---------------------------------------------------------------------------
+
     if map.player:getLifes() <= 0 then
         gameController:setGameState(1)
     end
@@ -225,6 +231,11 @@ function endContact(a, b, coll)
             end
         end
     end
+
+    if (a:getUserData() == "Player" and b:getUserData() == "SliderPlatform") then
+        map.player.isSliderPlatform = false
+        map.player.sliderForce = 0
+    end
 end
 
 function preSolve(a, b, coll)
@@ -234,7 +245,11 @@ function preSolve(a, b, coll)
             map.player.dx = hp.dx -- Increase the movement in the player
         end
     end
-
+    if (a:getUserData() == "Player" and b:getUserData() == "SliderPlatform") then
+        for _,sp in pairs(map.sliderPlatforms) do
+            map.player.sliderForce = sp.sliderForce
+        end
+    end
 end
 
 function postSolve(a, b, coll, normalimpulse, tangentimpulse)
@@ -247,7 +262,7 @@ function love.keypressed(key)
         map.player:jump()
     elseif gameController:getGameState() == 1 and key == "return" then
         -- Start the game from the menu
-        map:loadMap(1, true) -- First map
+        map:loadMap(TEMP, true) -- First map
         gameController:setGameState(2) -- start game
     elseif key == "escape" then
         love.event.quit()
@@ -256,19 +271,19 @@ end
 
 function debug()
     -- Debug
-    --if love.keyboard.isDown("c") then
-    --  for _, body in pairs(world:getBodies()) do
-    --    for _, fixture in pairs(body:getFixtures()) do
-    --        local shape = fixture:getShape()
-    --        if shape:typeOf("CircleShape") then
-    --            local cx, cy = body:getWorldPoints(shape:getPoint())
-    --            love.graphics.circle("fill", cx, cy, shape:getRadius())
-    --        elseif shape:typeOf("PolygonShape") then
-    --            love.graphics.polygon("line", body:getWorldPoints(shape:getPoints()))
-    --        else
-    --            love.graphics.line(body:getWorldPoints(shape:getPoints()))
-    --        end
-    --    end
-    --  end
-    --end
+    if love.keyboard.isDown("c") then
+      for _, body in pairs(world:getBodies()) do
+        for _, fixture in pairs(body:getFixtures()) do
+            local shape = fixture:getShape()
+            if shape:typeOf("CircleShape") then
+                local cx, cy = body:getWorldPoints(shape:getPoint())
+                love.graphics.circle("fill", cx, cy, shape:getRadius())
+            elseif shape:typeOf("PolygonShape") then
+                love.graphics.polygon("line", body:getWorldPoints(shape:getPoints()))
+            else
+                love.graphics.line(body:getWorldPoints(shape:getPoints()))
+            end
+        end
+      end
+    end
 end

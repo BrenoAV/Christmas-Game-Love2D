@@ -3,81 +3,101 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map3.tmx",
+    "activeFile": "map4.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
         "map1.tmx": {
             "expandedObjectLayers": [
-                8
+                15,
+                8,
+                9
             ],
-            "scale": 0.75,
-            "selectedLayer": 5,
+            "scale": 1.5,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1920,
-                "y": 638.6666666666665
+                "x": 3211,
+                "y": 943.9999999999999
             }
         },
         "map1.tmx#Objects": {
             "dynamicWrapping": false,
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "map1.tmx#tileset-winter": {
             "scaleInDock": 1
         },
         "map2.tmx": {
-            "scale": 0.16526041666666666,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                15,
+                9
+            ],
+            "scale": 4,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1924.2357390482196,
-                "y": 641.4119130160732
+                "x": 3628.625,
+                "y": 679.25
             }
         },
         "map2.tmx#Objects Winter": {
-            "scaleInDock": 1
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "map2.tmx#tileset-winter": {
             "scaleInDock": 1
         },
         "map3.tmx": {
             "expandedObjectLayers": [
+                13,
                 10,
+                9,
+                4,
                 3,
-                17,
-                4
+                17
             ],
-            "scale": 0.75,
-            "selectedLayer": 4,
+            "scale": 3,
+            "selectedLayer": 11,
             "viewCenter": {
-                "x": 3865.333333333333,
-                "y": 576
+                "x": 4970.833333333333,
+                "y": 378
             }
         },
         "map3.tmx#Objects": {
             "dynamicWrapping": false,
-            "scaleInDock": 1
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
         },
         "map3.tmx#tileset-winter": {
             "scaleInDock": 1
         },
         "map4.tmx": {
             "expandedObjectLayers": [
-                11,
-                10,
                 13,
-                3,
-                7,
+                10,
+                11,
                 6,
+                7,
+                4,
                 5,
-                4
+                3,
+                14
             ],
-            "scale": 0.33,
-            "selectedLayer": 11,
+            "scale": 0.25,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 3381.818181818182,
-                "y": 1712.121212121212
+                "x": 3590,
+                "y": 1632
             }
+        },
+        "map4.tmx#IceBox64x64": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
         },
         "map4.tmx#objects": {
             "dynamicWrapping": true,
@@ -85,11 +105,12 @@
             "scaleInEditor": 1
         },
         "map4.tmx#tileset-winter": {
+            "dynamicWrapping": false,
             "scaleInDock": 0.75
         }
     },
-    "last.exportedFilePath": "/home/brenoav/GitHub/Christmas-Game-Love2D/maps",
-    "last.imagePath": "/home/brenoav/GitHub/Christmas-Game-Love2D/maps/Objects",
+    "last.exportedFilePath": "/home/stream/Desktop/Christmas-Game-Love2D/maps",
+    "last.imagePath": "/home/stream/Desktop/Christmas-Game-Love2D/maps/Objects",
     "map.height": 40,
     "map.lastUsedExportFilter": "Lua files (*.lua)",
     "map.lastUsedFormat": "tmx",
@@ -98,22 +119,22 @@
     "map.width": 120,
     "openFiles": [
         "map1.tmx",
-        "map4.tmx",
+        "map2.tmx",
         "map3.tmx",
-        "map2.tmx"
+        "map4.tmx"
     ],
     "project": "ChristmasGame.tiled-project",
     "property.type": "int",
     "recentFiles": [
         "map1.tmx",
-        "map4.tmx",
         "map2.tmx",
-        "map3.tmx"
+        "map3.tmx",
+        "map4.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
         "height": 64,
         "width": 64
     },
-    "tileset.type": 1
+    "tileset.type": 0
 }

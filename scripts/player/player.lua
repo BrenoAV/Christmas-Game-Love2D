@@ -17,6 +17,7 @@ function Player:new(x, y, width, height, world)
     o.height = height
     o.speed = 350 -- 300
     o.jumpForce = -3050
+    o.sliderForce = 0
     o.world = world
     o.dir = 1
     o.limRight = WIDTH
@@ -37,6 +38,7 @@ function Player:new(x, y, width, height, world)
     o.allowJump = true
     o.isChimney = false
     o.isHorizontalPlatform = false
+    o.isSliderPlatform = false
 
     -- Lifes
     o.lifes = 1
@@ -166,9 +168,12 @@ function Player:move(dt)
 
         ----
         -- Horizontal Platforms dx
-        --
+        ---
         if self.isHorizontalPlatform and not self.isRunning then
             self.physics.body:setX(self.physics.body:getX() + self.dx)
+        elseif self.isSliderPlatform then
+            local p1x, p1y, p2x, _, _, _, _, p2y =  self.physics.body:getWorldPoints(self.physics.shape:getPoints())
+            self.physics.body:applyForce(self.dir*self.sliderForce, 0, (p2x-p1x)/2, (p2y-p1y)/2)
         else
             self.dx = 0
         end

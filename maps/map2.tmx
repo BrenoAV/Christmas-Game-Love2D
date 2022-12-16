@@ -42,7 +42,7 @@
    <image width="228" height="280" source="Objects/Tree_2.png"/>
   </tile>
   <tile id="12">
-   <image width="128" height="130" source="Objects/chimney.png"/>
+   <image width="128" height="128" source="Objects/chimney.png"/>
   </tile>
  </tileset>
  <layer id="20" name="Tile Layer 1" width="60" height="20">
@@ -132,7 +132,7 @@
   <object id="132" x="2431.33" y="257.333" width="188" height="42.6667"/>
   <object id="133" x="3268" y="574.667" width="185.333" height="706.667"/>
   <object id="136" x="3459.33" y="769.333" width="250.666" height="512"/>
-  <object id="151" x="3584.5" y="653" width="127" height="116"/>
+  <object id="151" x="3584.5" y="658.333" width="127" height="110.667"/>
  </objectgroup>
  <objectgroup id="8" name="PlayerSpawn">
   <object id="126" x="48" y="1008">
@@ -170,7 +170,7 @@
   <object id="153" x="448" y="1187" width="192" height="90"/>
  </objectgroup>
  <objectgroup id="15" name="ChimneyFinish">
-  <object id="152" x="3621.5" y="645" width="48" height="8"/>
+  <object id="152" x="3622.42" y="652.583" width="48" height="5.33333"/>
  </objectgroup>
  <objectgroup id="16" name="Walls"/>
  <objectgroup id="19" name="Endpoints"/>

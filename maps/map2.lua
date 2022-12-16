@@ -137,7 +137,7 @@ return {
           id = 12,
           image = "Objects/chimney.png",
           width = 128,
-          height = 130
+          height = 128
         }
       }
     }
@@ -467,9 +467,9 @@ return {
           class = "",
           shape = "rectangle",
           x = 3584.5,
-          y = 653,
+          y = 658.333,
           width = 127,
-          height = 116,
+          height = 110.667,
           rotation = 0,
           visible = true,
           properties = {}
@@ -669,10 +669,10 @@ return {
           name = "",
           class = "",
           shape = "rectangle",
-          x = 3621.5,
-          y = 645,
+          x = 3622.42,
+          y = 652.583,
           width = 48,
-          height = 8,
+          height = 5.33333,
           rotation = 0,
           visible = true,
           properties = {}

@@ -9,6 +9,7 @@ require('scripts.flags.chimney_flag')
 require('scripts.objects.gift')
 require('scripts.sea')
 require('scripts.text')
+require('scripts.platforms.slider_platform')
 local sti = require('libraries/sti')
 
 Map = {}
@@ -31,6 +32,7 @@ function Map:new(world)
     o.gifts = {}
     o.horizontalPlatforms = {}
     o.fallenPlatforms = {}
+    o.sliderPlatforms = {}
 
     -- Collectables
     o.giftsCollected = 0
@@ -129,7 +131,6 @@ function Map:drawBackground()
 end
 
 function Map:loadMap(mapNum, resetPlayer)
-
     self:destroy(resetPlayer)
 
     self.currentMap = mapNum
@@ -226,6 +227,15 @@ function Map:loadMap(mapNum, resetPlayer)
             table.insert(self.gifts, Gift:new(obj.x, obj.y, self.world))
         end
     end
+
+    -- Platforms
+    if self.gameMap.layers["SliderPlatforms"] then
+        for _, obj in pairs(self.gameMap.layers["SliderPlatforms"].objects) do
+            table.insert(self.sliderPlatforms, SliderPlatform:new(obj.x + obj.width/2, obj.y + obj.height/2,
+                obj.width, obj.height, obj.properties.sliderForce, self.world))
+        end
+    end
+
 end
 
 function Map:destroy(resetPlayer)
@@ -315,6 +325,15 @@ function Map:destroy(resetPlayer)
          self.chimneyFlag:destroy()
      end
 
+    -- SliderPlatforms
+     i = #self.sliderPlatforms
+    while i > -1 do
+        if self.sliderPlatforms[i] ~= nil then
+            self.sliderPlatforms[i]:destroy()
+        end
+        table.remove(self.sliderPlatforms, i)
+        i = i - 1
+    end
 end
 
 function Map:allMaps()

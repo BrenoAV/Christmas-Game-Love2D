@@ -9,7 +9,7 @@
  <tileset firstgid="21" name="Objects" tilewidth="511" tileheight="280" tilecount="12" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="0">
-   <image width="128" height="130" source="Objects/chimney.png"/>
+   <image width="128" height="128" source="Objects/chimney.png"/>
   </tile>
   <tile id="1">
    <image width="101" height="101" source="Objects/Crate.png"/>
@@ -144,7 +144,7 @@
   <object id="82" x="2109.33" y="1085.33" width="190.667" height="46.6667"/>
   <object id="83" x="2364" y="1086.67" width="194.667" height="46.6667"/>
   <object id="94" x="2625.33" y="1088.67" width="190.667" height="46"/>
-  <object id="117" x="3200.33" y="905.333" width="127" height="116"/>
+  <object id="117" x="3200.33" y="915.833" width="127" height="105.5"/>
  </objectgroup>
  <objectgroup id="8" name="PlayerSpawn">
   <object id="119" x="217.333" y="1002.67">
@@ -165,7 +165,7 @@
   <object id="88" x="3326.67" y="1200.67" width="513.333" height="76"/>
  </objectgroup>
  <objectgroup id="15" name="ChimneyFinish">
-  <object id="89" x="3237.33" y="897.333" width="48" height="8"/>
+  <object id="89" x="3237.58" y="908.083" width="48" height="7.25"/>
  </objectgroup>
  <objectgroup id="16" name="Walls"/>
  <objectgroup id="21" name="Gifts">
