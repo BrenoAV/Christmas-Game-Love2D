@@ -5,8 +5,6 @@ require('scripts.interface')
 require("scripts.audio")
 Camera = require('libraries.hump.camera')
 
-TEMP = 1
-
 -- Local Variables
 local world = nil
 local cam = nil
@@ -262,7 +260,7 @@ function love.keypressed(key)
         map.player:jump()
     elseif gameController:getGameState() == 1 and key == "return" then
         -- Start the game from the menu
-        map:loadMap(TEMP, true) -- First map
+        map:loadMap(1, true) -- First map
         gameController:setGameState(2) -- start game
     elseif key == "escape" then
         love.event.quit()
